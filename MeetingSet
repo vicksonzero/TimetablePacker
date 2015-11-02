@@ -1,0 +1,19 @@
+package java;
+
+import java.util.ArrayList;
+
+public class MeetingSet {
+
+	public ArrayList<MeetingSet> meetingset = new ArrayList<>();
+	
+	public void generateMeetingSet(){
+		for(int i=0; i<coursenum; i++){
+			meetingset.add(courselist.get(i));
+		}
+	}
+	
+	
+	
+	
+
+}
