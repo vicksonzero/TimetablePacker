@@ -1,6 +1,7 @@
 package timetableGen;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import timetableGen.Rating.rateHandler;
 
@@ -22,6 +23,15 @@ public class Timetable implements Comparable<Timetable>{
 		}
 		
 		return score.compareTo(t2.score);
+	}
+	
+	public boolean hasConflict(){
+		
+		// sort all meetings here according to startDateTime
+		Collections.sort(this.meetings);
+		
+		
+		return false;
 	}
 	
 }
