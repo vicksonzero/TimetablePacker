@@ -8,7 +8,7 @@ public class Meeting implements Comparable<Meeting>{
 	private Date startDateTime;
 	private Date endDateTime;
 	
-	public Meeting(Date startDateTime, Date endDateTime){
+	public Meeting(Day dayOfWeek, Date startDateTime, Date endDateTime){
 		this.startDateTime = startDateTime;
 		this.endDateTime = endDateTime;
 	}
