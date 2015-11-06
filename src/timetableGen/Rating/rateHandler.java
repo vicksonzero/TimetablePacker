@@ -50,6 +50,10 @@ public class rateHandler {
 		return week[0]+week[1]+week[2]+week[3]+week[4]+week[5]+week[6];
 	}
 	
+	/**
+	 * returns time to be spent on the same day
+	 * @return
+	 */
 	private int timeDiff(){
 		String[] week={"SUNDAY","MONDAY","TUESDAY","WEDNESDAY","FRIDAY","SATURDAY"};
 		Date endTime=null;
@@ -67,6 +71,10 @@ public class rateHandler {
 		return (int) (diffMinutes/60);
 	}
 	
+	/**
+	 * counts morning lessons of a week
+	 * @return the number of lessons during the week that starts at 9am
+	 */
 	private int countMorningLesson(){
 		int counter=0;
 		 Calendar cal = Calendar.getInstance();
@@ -79,7 +87,11 @@ public class rateHandler {
 		
 		return counter;
 	}
-	
+
+	/**
+	 * counts morning lessons of a week
+	 * @return the number of lessons during the week that ends at 6pm
+	 */
 	private int countNightLesson(){
 		int counter=0;
 		 Calendar cal = Calendar.getInstance();
