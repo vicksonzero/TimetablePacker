@@ -2,23 +2,32 @@ package timetableGen;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 
 public class Meeting implements Comparable<Meeting>{
 	private Day day;
-	private Date startDateTime;
-	private Date endDateTime;
+	private Calendar startDateTime;
+	private Calendar endDateTime;
 	
-	public Meeting(Day dayOfWeek, String startDateTimeString, String endDateTimeString) throws ParseException{
-		String s = "2014-09-0";
-		s+=new Integer(dayOfWeek.getValue()).toString();
+	public Meeting(Day dayOfWeek, int startHour, int endHour){
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-		System.out.println(s);
 		
-		this.startDateTime = sdf.parse(s+" "+startDateTimeString);
-		this.endDateTime = sdf.parse(s+" "+endDateTimeString);
+		Calendar c = new GregorianCalendar();
+		c.set(2014, 9, 1);
+		
+		c.set(Calendar.DAY_OF_MONTH, dayOfWeek.getValue());
+		System.out.println(sdf.format(c.getTime()));
+
+		c.set(Calendar.HOUR, startHour);
+		this.startDateTime = c;
+		
+		c = (Calendar) c.clone();
+		c.set(Calendar.HOUR, endHour);
+		this.endDateTime = c;
 	}
 
 	public Day getDay() {
@@ -41,3 +50,5 @@ public class Meeting implements Comparable<Meeting>{
 	}
 
 }
+
+
