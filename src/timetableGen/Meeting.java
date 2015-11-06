@@ -32,7 +32,7 @@ public class Meeting {
     @Override
     public String toString() 
     {
-        return crn + " "+ sessionType + " "+ startTime + " " + endTime + " "+ campus + " "+ room + " "+ instructor;
+        return "CRN: "+ crn + " Sesion: "+ sessionType + " Time: "+ starttime + " - " + endtime + " Campus: "+ campus + " Room: "+ room + " Instructor: "+ instructor;
     }
     
 	public Days getDay() {
