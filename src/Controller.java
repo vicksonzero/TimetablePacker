@@ -4,6 +4,10 @@ import java.util.Collections;
 import meeting.Course;
 import meeting.Lecture;
 import meeting.Tutorial;
+<<<<<<< HEAD
+=======
+import timetableGen.Meeting;
+>>>>>>> master
 import timetableGen.Timetable;
 
 
@@ -21,6 +25,18 @@ public class Controller {
 		
 		for (int i=0;i<3;i++)
 			System.out.println(timetables.get(i));
+		for (Meeting e : meeting){
+			if (e.getSessionType().charAt(0) == 'T' )
+			{
+    		//tutorialType.add();
+			}
+			
+			if (e.getSessionType().charAt(0) == 'C' )
+	    	{
+	    		//lectureType.add();
+	    	}
+		}
+		
 	}
 	
 }
