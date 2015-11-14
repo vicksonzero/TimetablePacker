@@ -9,8 +9,8 @@ import java.util.GregorianCalendar;
 
 public class Meeting implements Comparable<Meeting>{
 	private Day day;
-	private Calendar startDateTime;
-	private Calendar endDateTime;
+	private Date startDateTime;
+	private Date endDateTime;
 	
 	public Meeting(Day dayOfWeek, int startHour, int endHour){
 
