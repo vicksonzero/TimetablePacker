@@ -4,10 +4,7 @@ import java.util.Collections;
 import meeting.Course;
 import meeting.Lecture;
 import meeting.Tutorial;
-<<<<<<< HEAD
-=======
 import timetableGen.Meeting;
->>>>>>> master
 import timetableGen.Timetable;
 
 

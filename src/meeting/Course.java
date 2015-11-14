@@ -8,10 +8,25 @@ import java.util.Scanner;
 
 import timetableGen.Meeting;
 
-public class Course
-//InputFileParser
+public class Course 
 {
-    public List<Meeting> parse(String filename)
+	List<Tutorial> tutorialList = new ArrayList<Tutorial>();
+	List<Lecture> lectureList = new ArrayList<Lecture>();
+	
+	 for (Input e : input) 
+     {
+     	if (e.getSessionType().charAt(0) == 'C' )
+     	{
+     		lectureList.add(new Meeting);
+     	}
+     	
+     	else if (e.getSessionType().charAt(0) == 'T' )
+    	{
+    		tutorialList.add(new Meeting);
+    	}
+     }
+	
+	/*   public List<Meeting>parse (String filename)
     {
         List<Meeting> entries = new ArrayList<Meeting>();
         File f = new File(filename);
@@ -31,4 +46,6 @@ public class Course
         }
         return entries;
     }
+    
+ */
 }
