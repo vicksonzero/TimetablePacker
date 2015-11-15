@@ -17,4 +17,15 @@ public enum Day {
     public int getValue() {
         return value;
     }
+    public static Day stringToDay(String str){
+    	switch(str){
+    	case "M": return Day.MONDAY;
+    	case "T": return Day.TUESDAY;
+    	case "W": return Day.WEDNESDAY;
+    	case "R": return Day.THURSDAY;
+    	case "F": return Day.FRIDAY;
+    	case "S": return Day.SATURDAY;
+    	default: return null;
+    	}
+    }
 }

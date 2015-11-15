@@ -1,4 +1,4 @@
-package timetableGen;
+package timetableGen.meeting;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -6,37 +6,34 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+import timetableGen.Day;
+
 public class Meeting implements Comparable<Meeting>{
 	private int crn;
     private String sessionType;
     private String campus;
     private String room;
     private String instructor;
-	Days day;
 	private Day day;
-	private Calendar startDateTime;
-	private Calendar endDateTime;
+	private Date startDateTime;
+	private Date endDateTime;
 	
-	public Meeting(int crn, String sessionType,Day dayOfWeek, int startHour, int endHour, String campus, String room, String instructor){
+	public Meeting(int crn, String sessionType,Day dayOfWeek, String startTimeString, String endTimeString, String campus, String room, String instructor) throws ParseException{
 		this.crn = crn;
     	this.sessionType = sessionType;
         this.campus = campus;
         this.room = room;
         this.instructor = instructor; 
         
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-		Calendar c = new GregorianCalendar();
-		c.set(2014, 9, 1);
-		
-		c.set(Calendar.DAY_OF_MONTH, dayOfWeek.getValue());
-		System.out.println(sdf.format(c.getTime()));
+        String s = "2014-09-0";
+		s+=new Integer(dayOfWeek.getValue()).toString();
 
-		c.set(Calendar.HOUR, startHour);
-		this.startDateTime = c;
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		System.out.println(s);
 		
-		c = (Calendar) c.clone();
-		c.set(Calendar.HOUR, endHour);
-		this.endDateTime = c;
+		this.startDateTime = sdf.parse(s+" "+startTimeString);
+		this.endDateTime = sdf.parse(s+" "+endTimeString);
+	
 	}
 
 	public Day getDay() {
@@ -51,7 +48,7 @@ public class Meeting implements Comparable<Meeting>{
 	@Override
     public String toString() 
     {
-        return "CRN: "+ crn + " Sesion: "+ sessionType + " Time: "+ startTime + " - " + endTime + " Campus: "+ campus + " Room: "+ room + " Instructor: "+ instructor;
+        return "CRN: "+ this.crn + " Sesion: "+ this.sessionType + " Time: "+ this.startDateTime + " - " + this.endDateTime + " Campus: "+ this.campus + " Room: "+ this.room + " Instructor: "+ this.instructor;
     }
 	
 	public Date getStartDateTime() {

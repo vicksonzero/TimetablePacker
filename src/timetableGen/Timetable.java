@@ -3,7 +3,8 @@ package timetableGen;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import timetableGen.Rating.rateHandler;
+import timetableGen.meeting.Meeting;
+import timetableGen.rating.rateHandler;
 
 public class Timetable implements Comparable<Timetable>{
 	public ArrayList<Meeting> meetings=new ArrayList<Meeting>();
