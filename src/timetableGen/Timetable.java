@@ -9,6 +9,8 @@ public class Timetable implements Comparable<Timetable>{
 	public ArrayList<Meeting> meetings=new ArrayList<Meeting>();
 	private Integer score=null;
 	
+	public ArrayList<MeetingSet> allCombinations = new ArrayList<MeetingSet>();
+	//this arraylist is for all combinations without any check crash 
 
 	@Override
 	public int compareTo(Timetable t2) {
@@ -51,6 +53,18 @@ public class Timetable implements Comparable<Timetable>{
 		// all remaining classes start after the current class
 		
 		return false;
+	}
+	
+	public void genAllCombinations(Course course1, Course course2){
+		for (int i=0; i<course1.MeetingSetinACourse.size();i++)
+		{
+			for (int j=0; j<course2.MeetingSetinACourse.size();j++)
+			{
+				allCombinations.add(course1.MeetingSetinACourse.get(i));
+				allCombinations.add(course2.MeetingSetinACourse.get(j)); //generate a list of meetingSet eg. T1C1T1C1
+				
+			}
+		}
 	}
 	
 }
