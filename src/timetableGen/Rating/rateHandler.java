@@ -1,11 +1,11 @@
-package timetableGen.Rating;
+package timetableGen.rating;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
 import timetableGen.Day;
-import timetableGen.Meeting;
+import timetableGen.meeting.Meeting;
 
 public class rateHandler {
 	private ArrayList<Meeting> meetingList;
