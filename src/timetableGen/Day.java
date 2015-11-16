@@ -1,7 +1,6 @@
 package timetableGen;
 
 
-import timetableGen.timetableGen.WrongFormatException;
 public enum Day {
     MONDAY(1),
     TUESDAY(2),

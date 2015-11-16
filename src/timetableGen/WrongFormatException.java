@@ -1,4 +1,4 @@
-package timetableGen.timetableGen;
+package timetableGen;
 
 public class WrongFormatException extends Exception {
 	

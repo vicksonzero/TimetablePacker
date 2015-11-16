@@ -11,7 +11,6 @@ import java.util.Scanner;
 import timetableGen.meeting.Course;
 import timetableGen.meeting.Lecture;
 import timetableGen.meeting.Tutorial;
-import timetableGen.timetableGen.WrongFormatException;
 
 public class Input {
 	ArrayList<String> session = new ArrayList<String>();
@@ -43,7 +42,7 @@ public class Input {
     	while (scanner.hasNext()) 
         {
         	line= scanner.nextLine();
-        	System.out.printf("\"%s\"%n",line);
+        	//System.out.printf("\"%s\"%n",line);
         	
         	if(needNewClass){ // last line is empty or it is first line
         		// line contains course code

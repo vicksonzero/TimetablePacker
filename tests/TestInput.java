@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import org.junit.Test;
 
 import timetableGen.Input;
+import timetableGen.WrongFormatException;
 import timetableGen.meeting.Course;
-import timetableGen.timetableGen.WrongFormatException;
 
 public class TestInput {
 

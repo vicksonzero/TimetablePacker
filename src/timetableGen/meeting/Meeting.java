@@ -29,7 +29,7 @@ public class Meeting implements Comparable<Meeting>{
 		s+=new Integer(dayOfWeek.getValue()).toString();
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-		System.out.println(s);
+		//System.out.println(s);
 		
 		this.startDateTime = sdf.parse(s+" "+startTimeString);
 		this.endDateTime = sdf.parse(s+" "+endTimeString);
