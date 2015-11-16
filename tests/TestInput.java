@@ -10,7 +10,7 @@ import org.junit.Test;
 
 import timetableGen.Input;
 import timetableGen.meeting.Course;
-import timetableGen.timetableGen.WrongFomatException;
+import timetableGen.timetableGen.WrongFormatException;
 
 public class TestInput {
 
@@ -24,7 +24,7 @@ public class TestInput {
 			assertEquals(3, courses.size());
 		} catch (FileNotFoundException e) {
 			fail();
-		} catch (WrongFomatException e) {
+		} catch (WrongFormatException e) {
 			fail();
 		}
 	}
@@ -37,7 +37,7 @@ public class TestInput {
 				super(f);
 				// TODO Auto-generated constructor stub
 			}
-			public void processMeetingLine(Course currentCourse, String line) throws WrongFomatException{
+			public void processMeetingLine(Course currentCourse, String line) throws WrongFormatException{
 				super.processMeetingLine(currentCourse, line);
 			}
 			
@@ -49,20 +49,20 @@ public class TestInput {
 			mi.processMeetingLine(c, "41706	C01	3	Main Campus	Y	B	8	128	N	11/01/2016 - 23/04/2016	R	15:00 - 16:50	AC1	LT-18	KEUNG Wai Jacky");
 			assertEquals(1, c.lectureList.size());
 			assertEquals(0, c.tutorialList.size());
-		} catch (WrongFomatException e) {
+		} catch (WrongFormatException e) {
 			fail();
 		}
 	}
 	
-	@Test(expected=WrongFomatException.class)
-	public void testLecProcessMeetingWrongTime() throws WrongFomatException {
+	@Test(expected=WrongFormatException.class)
+	public void testLecProcessMeetingWrongTime() throws WrongFormatException {
 		class MockInput extends Input{
 
 			public MockInput(File f) {
 				super(f);
 				// TODO Auto-generated constructor stub
 			}
-			public void processMeetingLine(Course currentCourse, String line) throws WrongFomatException{
+			public void processMeetingLine(Course currentCourse, String line) throws WrongFormatException{
 				super.processMeetingLine(currentCourse, line);
 			}
 			
@@ -74,15 +74,15 @@ public class TestInput {
 		
 	}
 	
-	@Test(expected=WrongFomatException.class)
-	public void testLecProcessMeetingWrongEndTime() throws WrongFomatException {
+	@Test(expected=WrongFormatException.class)
+	public void testLecProcessMeetingWrongEndTime() throws WrongFormatException {
 		class MockInput extends Input{
 
 			public MockInput(File f) {
 				super(f);
 				// TODO Auto-generated constructor stub
 			}
-			public void processMeetingLine(Course currentCourse, String line) throws WrongFomatException{
+			public void processMeetingLine(Course currentCourse, String line) throws WrongFormatException{
 				super.processMeetingLine(currentCourse, line);
 			}
 			
@@ -94,15 +94,15 @@ public class TestInput {
 		
 	}
 	
-	@Test(expected=WrongFomatException.class)
-	public void testLecProcessMeetingWrongCourseCode() throws WrongFomatException {
+	@Test(expected=WrongFormatException.class)
+	public void testLecProcessMeetingWrongCourseCode() throws WrongFormatException {
 		class MockInput extends Input{
 
 			public MockInput(File f) {
 				super(f);
 				// TODO Auto-generated constructor stub
 			}
-			public void processMeetingLine(Course currentCourse, String line) throws WrongFomatException{
+			public void processMeetingLine(Course currentCourse, String line) throws WrongFormatException{
 				super.processMeetingLine(currentCourse, line);
 			}
 			
@@ -114,15 +114,15 @@ public class TestInput {
 		
 	}
 	
-	@Test(expected=WrongFomatException.class)
-	public void testLecProcessMeetingWrongDay() throws WrongFomatException {
+	@Test(expected=WrongFormatException.class)
+	public void testLecProcessMeetingWrongDay() throws WrongFormatException {
 		class MockInput extends Input{
 
 			public MockInput(File f) {
 				super(f);
 				// TODO Auto-generated constructor stub
 			}
-			public void processMeetingLine(Course currentCourse, String line) throws WrongFomatException{
+			public void processMeetingLine(Course currentCourse, String line) throws WrongFormatException{
 				super.processMeetingLine(currentCourse, line);
 			}
 			
@@ -143,7 +143,7 @@ public class TestInput {
 				super(f);
 				// TODO Auto-generated constructor stub
 			}
-			public void processMeetingLine(Course currentCourse, String line) throws WrongFomatException{
+			public void processMeetingLine(Course currentCourse, String line) throws WrongFormatException{
 				super.processMeetingLine(currentCourse, line);
 			}
 			
@@ -155,20 +155,20 @@ public class TestInput {
 			mi.processMeetingLine(c, "41706	T01	3	Main Campus	Y	B	8	128	N	11/01/2016 - 23/04/2016	R	15:00 - 16:50	AC1	LT-18	KEUNG Wai Jacky");
 			assertEquals(1, c.tutorialList.size());
 			assertEquals(0, c.lectureList.size());
-		} catch (WrongFomatException e) {
+		} catch (WrongFormatException e) {
 			fail();
 		}
 	}
 	
-	@Test(expected=WrongFomatException.class)
-	public void testTutProcessMeetingWrongTime() throws WrongFomatException {
+	@Test(expected=WrongFormatException.class)
+	public void testTutProcessMeetingWrongTime() throws WrongFormatException {
 		class MockInput extends Input{
 
 			public MockInput(File f) {
 				super(f);
 				// TODO Auto-generated constructor stub
 			}
-			public void processMeetingLine(Course currentCourse, String line) throws WrongFomatException{
+			public void processMeetingLine(Course currentCourse, String line) throws WrongFormatException{
 				super.processMeetingLine(currentCourse, line);
 			}
 			
@@ -180,15 +180,15 @@ public class TestInput {
 		
 	}
 	
-	@Test(expected=WrongFomatException.class)
-	public void testTutProcessMeetingWrongEndTime() throws WrongFomatException {
+	@Test(expected=WrongFormatException.class)
+	public void testTutProcessMeetingWrongEndTime() throws WrongFormatException {
 		class MockInput extends Input{
 
 			public MockInput(File f) {
 				super(f);
 				// TODO Auto-generated constructor stub
 			}
-			public void processMeetingLine(Course currentCourse, String line) throws WrongFomatException{
+			public void processMeetingLine(Course currentCourse, String line) throws WrongFormatException{
 				super.processMeetingLine(currentCourse, line);
 			}
 			
@@ -200,15 +200,15 @@ public class TestInput {
 		
 	}
 	
-	@Test(expected=WrongFomatException.class)
-	public void testTutProcessMeetingWrongCourseCode() throws WrongFomatException {
+	@Test(expected=WrongFormatException.class)
+	public void testTutProcessMeetingWrongCourseCode() throws WrongFormatException {
 		class MockInput extends Input{
 
 			public MockInput(File f) {
 				super(f);
 				// TODO Auto-generated constructor stub
 			}
-			public void processMeetingLine(Course currentCourse, String line) throws WrongFomatException{
+			public void processMeetingLine(Course currentCourse, String line) throws WrongFormatException{
 				super.processMeetingLine(currentCourse, line);
 			}
 			
@@ -220,15 +220,15 @@ public class TestInput {
 		
 	}
 	
-	@Test(expected=WrongFomatException.class)
-	public void testTutProcessMeetingWrongDay() throws WrongFomatException {
+	@Test(expected=WrongFormatException.class)
+	public void testTutProcessMeetingWrongDay() throws WrongFormatException {
 		class MockInput extends Input{
 
 			public MockInput(File f) {
 				super(f);
 				// TODO Auto-generated constructor stub
 			}
-			public void processMeetingLine(Course currentCourse, String line) throws WrongFomatException{
+			public void processMeetingLine(Course currentCourse, String line) throws WrongFormatException{
 				super.processMeetingLine(currentCourse, line);
 			}
 			
@@ -240,15 +240,15 @@ public class TestInput {
 		
 	}
 	
-	@Test(expected=WrongFomatException.class)
-	public void testTutProcessMeetingWrongSessionType() throws WrongFomatException {
+	@Test(expected=WrongFormatException.class)
+	public void testTutProcessMeetingWrongSessionType() throws WrongFormatException {
 		class MockInput extends Input{
 
 			public MockInput(File f) {
 				super(f);
 				// TODO Auto-generated constructor stub
 			}
-			public void processMeetingLine(Course currentCourse, String line) throws WrongFomatException{
+			public void processMeetingLine(Course currentCourse, String line) throws WrongFormatException{
 				super.processMeetingLine(currentCourse, line);
 			}
 			

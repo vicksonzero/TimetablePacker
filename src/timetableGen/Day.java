@@ -1,7 +1,7 @@
 package timetableGen;
 
-import timetableGen.timetableGen.WrongFomatException;
 
+import timetableGen.timetableGen.WrongFormatException;
 public enum Day {
     MONDAY(1),
     TUESDAY(2),
@@ -19,7 +19,7 @@ public enum Day {
     public int getValue() {
         return value;
     }
-    public static Day stringToDay(String str) throws WrongFomatException{
+    public static Day stringToDay(String str) throws WrongFormatException{
     	switch(str){
     	case "M": return Day.MONDAY;
     	case "T": return Day.TUESDAY;
@@ -27,7 +27,7 @@ public enum Day {
     	case "R": return Day.THURSDAY;
     	case "F": return Day.FRIDAY;
     	case "S": return Day.SATURDAY;
-    	default: throw new WrongFomatException("Day should be one of MTWRFS");
+    	default: throw new WrongFormatException("Day should be one of MTWRFS");
     	}
     }
 }

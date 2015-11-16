@@ -1,11 +1,10 @@
+
+
 import java.util.ArrayList;
 import java.util.Collections;
 
 import timetableGen.Timetable;
 import timetableGen.meeting.Course;
-import timetableGen.meeting.Lecture;
-import timetableGen.meeting.Meeting;
-import timetableGen.meeting.Tutorial;
 
 
 public class Controller {

@@ -11,7 +11,7 @@ import java.util.Scanner;
 import timetableGen.meeting.Course;
 import timetableGen.meeting.Lecture;
 import timetableGen.meeting.Tutorial;
-import timetableGen.timetableGen.WrongFomatException;
+import timetableGen.timetableGen.WrongFormatException;
 
 public class Input {
 	ArrayList<String> session = new ArrayList<String>();
@@ -20,7 +20,7 @@ public class Input {
 	public Input(File f){
 		this.file = f;
 	}
-	public ArrayList<Course> parse() throws FileNotFoundException, WrongFomatException{
+	public ArrayList<Course> parse() throws FileNotFoundException, WrongFormatException{
     	// holder for result
     	ArrayList<Course> result = new ArrayList<Course>();
     	// scanner for file content
@@ -76,7 +76,7 @@ public class Input {
 		return result;
 	}
 	
-	protected void processMeetingLine(Course currentCourse, String line) throws WrongFomatException{
+	protected void processMeetingLine(Course currentCourse, String line) throws WrongFormatException{
 
 		String[] data = line.split("\t");
 		String[] timeParts =  data[11].split(" - ");
@@ -84,20 +84,20 @@ public class Input {
 			try {
 				currentCourse.lectureList.add(new Lecture(Integer.parseInt(data[0]), data[1], Day.stringToDay(data[10]), timeParts[0], timeParts[1], data[12], data[13], data[14]));
 			} catch (NumberFormatException e) {
-				throw new WrongFomatException("CRN should be a number");
+				throw new WrongFormatException("CRN should be a number");
 			} catch (ParseException e) {
-				throw new WrongFomatException("time format should be XX:XX - XX:XX");
+				throw new WrongFormatException("time format should be XX:XX - XX:XX");
 			}
 		}else if(data[1].charAt(0) == 'T'){
 			try {
 				currentCourse.tutorialList.add(new Tutorial(Integer.parseInt(data[0]), data[1], Day.stringToDay(data[10]), timeParts[0], timeParts[1], data[12], data[13], data[14]));
 			} catch (NumberFormatException e) {
-				throw new WrongFomatException("CRN should be a number");
+				throw new WrongFormatException("CRN should be a number");
 			} catch (ParseException e) {
-				throw new WrongFomatException("time format should be XX:XX - XX:XX");
+				throw new WrongFormatException("time format should be XX:XX - XX:XX");
 			}
 		}else{
-			throw new WrongFomatException("");
+			throw new WrongFormatException("");
 		}
 	}
 	
