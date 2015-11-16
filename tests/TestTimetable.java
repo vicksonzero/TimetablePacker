@@ -1,4 +1,4 @@
-package testTimetableGen;
+
 
 import static org.junit.Assert.*;
 

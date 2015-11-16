@@ -1,4 +1,4 @@
-package testTimetableGen;
+
 
 import static org.junit.Assert.*;
 
@@ -16,7 +16,7 @@ public class TestInput {
 
 	@Test
 	public void testWholeInput() {
-		File f = new File("src/testTimetableGen/testcases/test02_3courses.txt");
+		File f = new File("tests/testcases/test02_3courses.txt");
 		Input i = new Input(f);
 		ArrayList<Course> courses;
 		try {
@@ -42,7 +42,7 @@ public class TestInput {
 			}
 			
 		}
-		File f = new File("src/testTimetableGen/testcases/test02_3courses.txt");
+		File f = new File("tests/testcases/test02_3courses.txt");
 		MockInput mi = new MockInput(f);
 		Course c = new Course();
 		try {
@@ -67,7 +67,7 @@ public class TestInput {
 			}
 			
 		}
-		File f = new File("src/testTimetableGen/testcases/test02_3courses.txt");
+		File f = new File("tests/testcases/test02_3courses.txt");
 		MockInput mi = new MockInput(f);
 		Course c = new Course();
 		mi.processMeetingLine(c, "41706	C01	3	Main Campus	Y	B	8	128	N	11/01/2016 - 23/04/2016	R	1a:00 - 16:50	AC1	LT-18	KEUNG Wai Jacky");
@@ -87,7 +87,7 @@ public class TestInput {
 			}
 			
 		}
-		File f = new File("src/testTimetableGen/testcases/test02_3courses.txt");
+		File f = new File("tests/testcases/test02_3courses.txt");
 		MockInput mi = new MockInput(f);
 		Course c = new Course();
 		mi.processMeetingLine(c, "41706	C01	3	Main Campus	Y	B	8	128	N	11/01/2016 - 23/04/2016	R	13:00 - 1a:50	AC1	LT-18	KEUNG Wai Jacky");
@@ -107,7 +107,7 @@ public class TestInput {
 			}
 			
 		}
-		File f = new File("src/testTimetableGen/testcases/test02_3courses.txt");
+		File f = new File("tests/testcases/test02_3courses.txt");
 		MockInput mi = new MockInput(f);
 		Course c = new Course();
 		mi.processMeetingLine(c, "41a06	C01	3	Main Campus	Y	B	8	128	N	11/01/2016 - 23/04/2016	R	13:00 - 16:50	AC1	LT-18	KEUNG Wai Jacky");
@@ -127,7 +127,7 @@ public class TestInput {
 			}
 			
 		}
-		File f = new File("src/testTimetableGen/testcases/test02_3courses.txt");
+		File f = new File("tests/testcases/test02_3courses.txt");
 		MockInput mi = new MockInput(f);
 		Course c = new Course();
 		mi.processMeetingLine(c, "41706	C01	3	Main Campus	Y	B	8	128	N	11/01/2016 - 23/04/2016	r	13:00 - 16:50	AC1	LT-18	KEUNG Wai Jacky");
@@ -148,7 +148,7 @@ public class TestInput {
 			}
 			
 		}
-		File f = new File("src/testTimetableGen/testcases/test02_3courses.txt");
+		File f = new File("tests/testcases/test02_3courses.txt");
 		MockInput mi = new MockInput(f);
 		Course c = new Course();
 		try {
@@ -173,7 +173,7 @@ public class TestInput {
 			}
 			
 		}
-		File f = new File("src/testTimetableGen/testcases/test02_3courses.txt");
+		File f = new File("tests/testcases/test02_3courses.txt");
 		MockInput mi = new MockInput(f);
 		Course c = new Course();
 		mi.processMeetingLine(c, "41706	T01	3	Main Campus	Y	B	8	128	N	11/01/2016 - 23/04/2016	R	1a:00 - 16:50	AC1	LT-18	KEUNG Wai Jacky");
@@ -193,7 +193,7 @@ public class TestInput {
 			}
 			
 		}
-		File f = new File("src/testTimetableGen/testcases/test02_3courses.txt");
+		File f = new File("tests/testcases/test02_3courses.txt");
 		MockInput mi = new MockInput(f);
 		Course c = new Course();
 		mi.processMeetingLine(c, "41706	T01	3	Main Campus	Y	B	8	128	N	11/01/2016 - 23/04/2016	R	13:00 - 1a:50	AC1	LT-18	KEUNG Wai Jacky");
@@ -213,7 +213,7 @@ public class TestInput {
 			}
 			
 		}
-		File f = new File("src/testTimetableGen/testcases/test02_3courses.txt");
+		File f = new File("tests/testcases/test02_3courses.txt");
 		MockInput mi = new MockInput(f);
 		Course c = new Course();
 		mi.processMeetingLine(c, "41a06	T01	3	Main Campus	Y	B	8	128	N	11/01/2016 - 23/04/2016	R	13:00 - 16:50	AC1	LT-18	KEUNG Wai Jacky");
@@ -233,7 +233,7 @@ public class TestInput {
 			}
 			
 		}
-		File f = new File("src/testTimetableGen/testcases/test02_3courses.txt");
+		File f = new File("tests/testcases/test02_3courses.txt");
 		MockInput mi = new MockInput(f);
 		Course c = new Course();
 		mi.processMeetingLine(c, "41706	T01	3	Main Campus	Y	B	8	128	N	11/01/2016 - 23/04/2016	r	13:00 - 16:50	AC1	LT-18	KEUNG Wai Jacky");
@@ -253,7 +253,7 @@ public class TestInput {
 			}
 			
 		}
-		File f = new File("src/testTimetableGen/testcases/test02_3courses.txt");
+		File f = new File("tests/testcases/test02_3courses.txt");
 		MockInput mi = new MockInput(f);
 		Course c = new Course();
 		mi.processMeetingLine(c, "41706	a01	3	Main Campus	Y	B	8	128	N	11/01/2016 - 23/04/2016	R	13:00 - 16:50	AC1	LT-18	KEUNG Wai Jacky");
