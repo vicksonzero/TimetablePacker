@@ -1,10 +1,12 @@
 package timetableGen;
 
+
 import java.util.ArrayList;
 import java.util.Collections;
 
 import timetableGen.meeting.Meeting;
-import timetableGen.rating.rateHandler;
+import timetableGen.Rating.RateHandler;
+
 
 public class Timetable implements Comparable<Timetable>{
 	public ArrayList<Meeting> meetings=new ArrayList<Meeting>();
@@ -14,12 +16,12 @@ public class Timetable implements Comparable<Timetable>{
 	@Override
 	public int compareTo(Timetable t2) {
 		if (this.score==null){
-			rateHandler rater=new rateHandler(this.meetings);
+			RateHandler rater=new RateHandler(this.meetings);
 			this.score=rater.rate();
 		}
 		
 		if(t2.score==null){
-			rateHandler raterT2=new rateHandler(t2.meetings);
+			RateHandler raterT2=new RateHandler(t2.meetings);
 			t2.score=raterT2.rate();
 		}
 		
@@ -52,6 +54,10 @@ public class Timetable implements Comparable<Timetable>{
 		// all remaining classes start after the current class
 		
 		return false;
+	}
+
+	public ArrayList<Meeting> getMeetings() {
+		return this.meetings;
 	}
 	
 }

@@ -19,13 +19,15 @@ public enum Day {
         return value;
     }
     public static Day stringToDay(String str) throws WrongFormatException{
-    	switch(str){
-    	case "M": return Day.MONDAY;
-    	case "T": return Day.TUESDAY;
-    	case "W": return Day.WEDNESDAY;
-    	case "R": return Day.THURSDAY;
-    	case "F": return Day.FRIDAY;
-    	case "S": return Day.SATURDAY;
+    	//Converting String to char for switch statement so that it can be run with JDK 1.6
+    	char str2=str.charAt(0);
+    	switch(str2){
+    	case 'M': return Day.MONDAY;
+    	case 'T': return Day.TUESDAY;
+    	case 'W': return Day.WEDNESDAY;
+    	case 'R': return Day.THURSDAY;
+    	case 'F': return Day.FRIDAY;
+    	case 'S': return Day.SATURDAY;
     	default: throw new WrongFormatException("Day should be one of MTWRFS");
     	}
     }
