@@ -1,5 +1,6 @@
 package timetableGen;
 
+
 public enum Day {
     MONDAY(1),
     TUESDAY(2),
@@ -16,5 +17,16 @@ public enum Day {
 
     public int getValue() {
         return value;
+    }
+    public static Day stringToDay(String str) throws WrongFormatException{
+    	switch(str){
+    	case "M": return Day.MONDAY;
+    	case "T": return Day.TUESDAY;
+    	case "W": return Day.WEDNESDAY;
+    	case "R": return Day.THURSDAY;
+    	case "F": return Day.FRIDAY;
+    	case "S": return Day.SATURDAY;
+    	default: throw new WrongFormatException("Day should be one of MTWRFS");
+    	}
     }
 }

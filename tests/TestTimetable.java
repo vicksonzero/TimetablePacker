@@ -1,4 +1,4 @@
-package testTimetableGen;
+
 
 import static org.junit.Assert.*;
 
@@ -8,8 +8,8 @@ import java.text.SimpleDateFormat;
 import org.junit.Test;
 
 import timetableGen.Day;
-import timetableGen.Meeting;
 import timetableGen.Timetable;
+import timetableGen.meeting.Meeting;
 
 public class TestTimetable {
 
@@ -20,16 +20,16 @@ public class TestTimetable {
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("hh:ss");
 		
-		m = new Meeting(Day.MONDAY, "09:00", "10:50");
+		m = new Meeting(0, null, Day.MONDAY, "09:00", "10:50", null, null, null);
 		tt.meetings.add(m);
 
-		m = new Meeting(Day.MONDAY, "11:00", "12:50");
+		m = new Meeting(0, null, Day.MONDAY, "11:00", "12:50", null, null, null);
 		tt.meetings.add(m);
 
-		m = new Meeting(Day.MONDAY, "13:00", "13:50");
+		m = new Meeting(0, null, Day.MONDAY, "13:00", "13:50", null, null, null);
 		tt.meetings.add(m);
 
-		m = new Meeting(Day.MONDAY, "14:00", "15:50");
+		m = new Meeting(0, null, Day.MONDAY, "14:00", "15:50", null, null, null);
 		tt.meetings.add(m);
 		
 		assertTrue("timetable should have no conflicts", !tt.hasConflict());
@@ -42,16 +42,16 @@ public class TestTimetable {
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("hh:ss");
 		
-		m = new Meeting(Day.MONDAY, "09:00", "10:50");
+		m = new Meeting(0, null, Day.MONDAY, "09:00", "10:50", null, null, null);
 		tt.meetings.add(m);
 
-		m = new Meeting(Day.MONDAY, "10:00", "12:50");
+		m = new Meeting(0, null, Day.MONDAY, "10:00", "12:50", null, null, null);
 		tt.meetings.add(m);
 
-		m = new Meeting(Day.MONDAY, "13:00", "13:50");
+		m = new Meeting(0, null, Day.MONDAY, "13:00", "13:50", null, null, null);
 		tt.meetings.add(m);
 
-		m = new Meeting(Day.MONDAY, "14:00", "15:50");
+		m = new Meeting(0, null, Day.MONDAY, "14:00", "15:50", null, null, null);
 		tt.meetings.add(m);
 		
 		assertTrue("timetable should have conflicts", tt.hasConflict());
@@ -64,16 +64,16 @@ public class TestTimetable {
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("hh:ss");
 		
-		m = new Meeting(Day.MONDAY, "09:00", "10:50");
+		m = new Meeting(0, null, Day.MONDAY, "09:00", "10:50", null, null, null);
 		tt.meetings.add(m);
 
-		m = new Meeting(Day.MONDAY, "11:00", "12:00");
+		m = new Meeting(0, null, Day.MONDAY, "11:00", "12:00", null, null, null);
 		tt.meetings.add(m);
 
-		m = new Meeting(Day.TUESDAY, "10:00", "11:50");
+		m = new Meeting(0, null, Day.TUESDAY, "10:00", "11:50", null, null, null);
 		tt.meetings.add(m);
 
-		m = new Meeting(Day.TUESDAY, "12:00", "15:00");
+		m = new Meeting(0, null, Day.TUESDAY, "12:00", "15:00", null, null, null);
 		tt.meetings.add(m);
 		
 		assertTrue("timetable should have no conflicts", !tt.hasConflict());
@@ -85,16 +85,16 @@ public class TestTimetable {
 		Meeting m;
 		
 		try {
-			m = new Meeting(Day.MONDAY, "09:00","10:50");
+			m = new Meeting(0, null, Day.MONDAY, "09:00","10:50", null, null, null);
 			tt.meetings.add(m);
 
-			m = new Meeting(Day.MONDAY, "11:00", "12:00");
+			m = new Meeting(0, null, Day.MONDAY, "11:00", "12:00", null, null, null);
 			tt.meetings.add(m);
 
-			m = new Meeting(Day.TUESDAY, "10:00", "11:50");
+			m = new Meeting(0, null, Day.TUESDAY, "10:00", "11:50", null, null, null);
 			tt.meetings.add(m);
 
-			m = new Meeting(Day.TUESDAY, "11:00", "15:00");
+			m = new Meeting(0, null, Day.TUESDAY, "11:00", "15:00", null, null, null);
 			tt.meetings.add(m);
 			
 		} catch (ParseException e) {
