@@ -37,9 +37,16 @@ public class TestGenAllCombinations {
 		ExpectedList.add(meet2);
 		ExpectedList.add(meet3);
 		ExpectedList.add(meet4);
+		boolean result = false;
 		
 		MeetingSetinACourse = c1.generateMeetingSet(m1, m2);
-		assertEquals(MeetingSetinACourse, ExpectedList);
+		for( int i=0; i<MeetingSetinACourse.size(); i++){
+			if(MeetingSetinACourse.get(i).equals(ExpectedList.get(i))){
+			result = true;
+			}
+		}
+			
+		assertEquals(result, true);//should be true
 	}
 			
 
