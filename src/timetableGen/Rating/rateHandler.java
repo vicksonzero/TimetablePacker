@@ -1,4 +1,4 @@
-package timetableGen.Rating;
+package timetableGen.rating;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -44,7 +44,6 @@ public class RateHandler {
 	 * returns time to be spent on the same day
 	 * @return
 	 */
-	@SuppressWarnings("deprecation")
 	private int timeDiff(){
 			
 		Date firstClass[]=new Date[7];	//startTime of first class of the day

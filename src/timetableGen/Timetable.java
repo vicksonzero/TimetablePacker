@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import timetableGen.meeting.Meeting;
-import timetableGen.Rating.RateHandler;
+import timetableGen.rating.RateHandler;
 
 
 public class Timetable implements Comparable<Timetable>{

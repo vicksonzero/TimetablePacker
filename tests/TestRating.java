@@ -1,4 +1,4 @@
-package tests;
+
 
 import static org.junit.Assert.*;
 
@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import org.junit.Test;
 
 import timetableGen.*;
-import timetableGen.Rating.*;
 import timetableGen.meeting.Meeting;
+import timetableGen.rating.RateHandler;
 
 public class TestRating {
 
@@ -20,10 +20,9 @@ public class TestRating {
 		ArrayList<Meeting> meetingList=new ArrayList<>();
 		RateHandler rating = new RateHandler(meetingList);
 		int score = rating.rate();
-		assertEquals(score,0);		
+		assertEquals(score,0);
 	}
 	
-	@SuppressWarnings("null")
 	@Test
 	//One Day Off; No Time Diff; No Morning lesson; No Night Lesson
 	public void testOneDayOff() throws ParseException {
@@ -84,7 +83,7 @@ public class TestRating {
 		
 		RateHandler rating = new RateHandler(meetingList);
 		int score = rating.rate();
-		assertEquals(score,7+0+7+0);		
+		assertEquals(score,7+0+7+0);
 	}
 	
 	
@@ -176,7 +175,7 @@ public class TestRating {
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}				
+		}
 		
 		//night lesson=2
 		//morning lesson=2
