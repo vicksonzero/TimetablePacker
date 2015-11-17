@@ -54,7 +54,7 @@ public class rateHandler {
 	 * returns time to be spent on the same day
 	 * @return
 	 */
-	private int timeDiff(){
+	/*private int timeDiff(){
 		String[] week={"SUNDAY","MONDAY","TUESDAY","WEDNESDAY","FRIDAY","SATURDAY"};
 		Date endTime=null;
 		long diffMinutes=0;
@@ -69,8 +69,47 @@ public class rateHandler {
 				}
 			}
 		return (int) (diffMinutes/60);
-	}
+	}*/
 	
+
+
+		private int timeDiff(){
+		String[] week={"SUNDAY","MONDAY","TUESDAY","WEDNESDAY","FRIDAY","SATURDAY"};
+		Date endTime=null;
+		long count = 0;
+		Date LessonTime[][] = new Date [7][2];
+		long LessonBetween[] = new long [7];
+		long diffMinutes=0;
+			for (int i=0;i<7;i++){
+				for (Meeting e: meetingList){
+					if (week[i].equals(e.getDay().toString())){
+						Date startTime=e.getStartTime();
+						if(endTime!=null)
+							  diffMinutes = diffMinutes+(startTime.getTime()-endTime.getTime()) / (60 * 1000) % 60; 
+						endTime=e.getEndTime();
+					}
+		for (int i=0;i<7;i++){
+			for (Meeting e: meetingList){
+				if (week[i].equals(e.getDay().toString())){
+					if(e.getStartTime().before(LessonTime[i][0]))
+						LessonTime[i][0] = e.getStartTime();
+					else 
+						if(e.getStartTime().after(LessonTime[i][1]))
+							LessonTime[i][0] = e.getStartTime();
+						else
+							LessonBetween[i] += e.getEndTime().getTime() - e.getStartTime().getTime();
+				}
+			}
+		}
+		for(int i=0;i<7;i++){
+			long FreeTime = LessonTime[i][1].getTime() - LessonTime[i][0].getTime();
+			FreeTime -= LessonBetween[i];
+			diffMinutes += FreeTime /(1000*60);
+		}
+		return (int) (diffMinutes/60);
+	}
+
+
 	/**
 	 * counts morning lessons of a week
 	 * @return the number of lessons during the week that starts at 9am
