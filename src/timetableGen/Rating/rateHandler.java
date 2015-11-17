@@ -14,6 +14,13 @@ public class RateHandler {
 		this.meetingList=m;
 	}
 	
+	
+	public int rating(){
+		
+		return 0;
+		
+		
+	}
 	public int rate(){
 		int score=0;
 		if(this.meetingList!=null)
@@ -46,38 +53,76 @@ public class RateHandler {
 		int lastLength[]=new int[7];   //length of the last class of the day
 		int duration[]=new int[7];   //total length of lesson between the first and last class
 		
+		
 		for (Meeting e: meetingList){
 			int dayInArray=e.getDay().getValue()-1;
-			int diff=(int)(e.getEndDateTime().getTime()-e.getStartDateTime().getTime())/60;
+			System.out.println("day: "+dayInArray);
+			int diff=(int)(((e.getEndDateTime().getTime()-e.getStartDateTime().getTime())/1000/60+10)/60);
+			System.out.println("diff: "+diff);
+			
 			///////////////////////////////////////////////////////////
 			//consider case:
-			//1. if first is null: update firstLength to e.length, firstClss to e.startTime
-			//2. if end is null:
-			//3. if before first: update duration(+old firstLength), firstLength to e.length, firstClss to e.startTime
-			//4. if after last
-			//else, in between
+			//1. if first is null
+			//       --last is not null(impossible)      >>add to first
+			//       --last is null					>>add to first
+			//2. if first is not null and e.StartTime before first
+			//       --last also not null    >> add the old first to between
+			//       --last is null          >> move old first to last
+			//3. if first is not null and e.StartTime after first
+			//       --last is not null
+			//				-e.StartTime before last
+			//				-e.StartTime after last
+			//       --last is null
 			///////////////////////////////////////////////////////////////////
 			if(firstClass[dayInArray]==null){
 				 firstLength[dayInArray]=diff;
 				 firstClass[dayInArray]=e.getStartDateTime();
-			 }else if(lastClass[dayInArray]==null){
-				 lastLength[dayInArray]=diff;
-				 lastClass[dayInArray]=e.getStartDateTime();
-			 }else if (e.getStartDateTime().before(firstClass[dayInArray])){
-				duration[dayInArray]=+firstLength[dayInArray];
+			}else if (e.getStartDateTime().before(firstClass[dayInArray])){
+				 if (lastClass[dayInArray]!=null){
+					 duration[dayInArray]+=firstLength[dayInArray];
+				 }else{
+					 lastLength[dayInArray]=firstLength[dayInArray];
+					 lastClass[dayInArray]=firstClass[dayInArray];
+				 }
 				firstLength[dayInArray]=diff;
 				firstClass[dayInArray]=e.getStartDateTime();
-			 }else if(e.getStartDateTime().after(lastClass[dayInArray])){
-				duration[dayInArray]=+lastLength[dayInArray];
-				lastLength[dayInArray]=diff;
-				lastClass[dayInArray]=e.getStartDateTime();		
-			 }else {
-				 duration[dayInArray]=+diff;
-			 }
+			}else if(e.getStartDateTime().after(firstClass[dayInArray])){
+				if (lastClass[dayInArray]!=null){
+					if (e.getStartDateTime().before(lastClass[dayInArray])){
+						duration[dayInArray]+=diff;
+					}else{
+						duration[dayInArray]+=lastLength[dayInArray];
+						lastLength[dayInArray]=diff;
+						lastClass[dayInArray]=e.getStartDateTime();		
+					}
+				}else{
+					 lastLength[dayInArray]=diff;
+					 lastClass[dayInArray]=e.getStartDateTime();
+				}
+				
+			}
+		}
+			
+		
+		int totalDiff=0;
+		for (int i=0;i<7;i++){
+			int dura;
+			if (lastClass[i]==null){
+				dura=0;
+				System.out.println("dura:"+ dura);
+			}else{
+				dura=(int) (((lastClass[i].getTime()-firstClass[i].getTime())/1000/60+10)/60-firstLength[i]-duration[i]);
+				System.out.println("duraLastFirst:"+ dura);
+			}
+			
+			totalDiff+=dura;
 		}
 		
-		return duration[0]+duration[1]+duration[2]+duration[3]+duration[4]+duration[5]+duration[6];
+		System.out.println("result:"+ totalDiff);
+		return totalDiff;
 	}
+	
+
 	
 	
 	/**

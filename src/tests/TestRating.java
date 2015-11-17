@@ -13,24 +13,24 @@ import timetableGen.meeting.Meeting;
 
 public class TestRating {
 
-/*	@Test
+	@Test
 	//No Lesson
 	public void testNoLesson() {
 		Meeting m ;
-		ArrayList<Meeting> meetingList = null;
+		ArrayList<Meeting> meetingList=new ArrayList<>();
 		RateHandler rating = new RateHandler(meetingList);
 		int score = rating.rate();
 		assertEquals(score,0);		
-	}*/
+	}
 	
 	@SuppressWarnings("null")
 	@Test
 	//One Day Off; No Time Diff; No Morning lesson; No Night Lesson
-	public void testOneDayOff() {
+	public void testOneDayOff() throws ParseException {
 		Meeting m ;
-		ArrayList<Meeting> meetingList=new ArrayList<Meeting>();
+		ArrayList<Meeting> meetingList=new ArrayList<>();
 		
-		try {
+		
 			m = new Meeting(0, null, Day.MONDAY, "10:00", "11:50", null, null, null);
 			meetingList.add(m);
 			System.out.println("1");
@@ -50,21 +50,16 @@ public class TestRating {
 			meetingList.add(m);
 			System.out.println("6");
 			
-		} catch (ParseException e) {
-			System.out.println("bug!");
-			e.printStackTrace();
-		}
-		
-		RateHandler rating = new RateHandler(meetingList);
-		int score = rating.rate();
-		assertEquals(score,6+0+0+0);		
+			RateHandler rating = new RateHandler(meetingList);
+			int score = rating.rate();
+			assertEquals(score,6+0+0+0);		
 	}
 	
+	@Test
 	//No Day Off; No Time Diff; No Morning lesson; Night Lesson
 	public void testMorningLesson() {
 		Meeting m ;
 		ArrayList<Meeting> meetingList = new ArrayList<Meeting>();
-		
 		
 		try{
 			m = new Meeting(0, null, Day.MONDAY, "09:00", "11:50",null, null, null);
@@ -92,8 +87,12 @@ public class TestRating {
 		assertEquals(score,7+0+7+0);		
 	}
 	
+	
+	@Test
 	//No Day Off; Time Diff; No Morning lesson; No Night Lesson
 	public void testTimeDiff() {
+		
+		//wrong test case here, please design a test case that will only have score in time difference method or by other means, do not involve other untested method.
 		Meeting m ;
 		ArrayList<Meeting> meetingList = new ArrayList<Meeting>();
 		
@@ -120,9 +119,10 @@ public class TestRating {
 		}
 		RateHandler rating = new RateHandler(meetingList);
 		int score = rating.rate();
-		assertEquals(score,7+1+0+0);		
+		assertEquals(score,8);		
 	}
 	
+	@Test
 	//No Day Off; No Morning lesson;No Night Lesson; Time Diff
 	public void testNightLesson() {
 		Meeting m ;
@@ -153,6 +153,8 @@ public class TestRating {
 		assertEquals(score,7+0+0+7);		
 	}
 
+	
+	@Test
 	//TWO Day Off; TWO Morning lesson; TWO Night Lesson; Time Diff
 	public void testAll() {
 		Meeting m ;
@@ -175,9 +177,14 @@ public class TestRating {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}				
+		
+		//night lesson=2
+		//morning lesson=2
+		//timeDiff=3
+		//days=5
 		RateHandler rating = new RateHandler(meetingList);
 		int score = rating.rate();
-		assertEquals(score,2+3+2+2);		
+		assertEquals(score,5+3+2+2);		
 	}
 
 		

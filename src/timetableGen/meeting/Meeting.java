@@ -33,7 +33,7 @@ public class Meeting implements Comparable<Meeting>{
 		
 		this.startDateTime = sdf.parse(s+" "+startTimeString);
 		this.endDateTime = sdf.parse(s+" "+endTimeString);
-	
+		this.day=dayOfWeek;
 	}
 
 	public Day getDay() {
