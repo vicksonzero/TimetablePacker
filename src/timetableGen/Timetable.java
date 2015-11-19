@@ -4,7 +4,10 @@ package timetableGen;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import timetableGen.meeting.Course;
+import timetableGen.meeting.Lecture;
 import timetableGen.meeting.Meeting;
+import timetableGen.meeting.Tutorial;
 import timetableGen.rating.RateHandler;
 
 
@@ -58,6 +61,51 @@ public class Timetable implements Comparable<Timetable>{
 
 	public ArrayList<Meeting> getMeetings() {
 		return this.meetings;
+	}
+	
+
+	public static ArrayList<Timetable> genCom(int i,ArrayList<Course> courses){
+		ArrayList<Timetable> ttList=new ArrayList<Timetable>();
+		if(courses.size()==0){
+			return null;
+		}
+		if (i<courses.size()-1){
+			///////////////////////////////////////////////////////////////
+			//upper cases:
+			//extract all meetings from the lower level return
+			//create new timetable with 1 lecture and 1 tutorials from this course and all the meetings from lower level
+			//returns grps of timetable
+			/////////////////////////////////////////////////////////////
+			for (Lecture lect:courses.get(i).getLecture()){
+				for (Tutorial tut:courses.get(i).getTutorial()){
+					for (Timetable tt:genCom(i+1,courses)){
+						Timetable t=new Timetable();
+						t.meetings.add(tut);
+						t.meetings.add(lect);
+						for (Meeting m:tt.meetings)
+							t.meetings.add(m);
+						ttList.add(t);
+					};
+				}
+			}		
+		}else{
+			/////////////////////////////////////////////////////////////
+			//base case:
+			//generate all combination of lecture and tutorial in this course
+			//add to timetable as meetings (1 lecture and 1 tutorial in this timetable
+			//return grps of timetable
+			////////////////////////////////////////////////////////////
+			Course c=courses.get(i);
+			for (Lecture lect:c.getLecture()){
+				for (Tutorial tut:c.getTutorial()){
+					Timetable tt=new Timetable();
+					tt.meetings.add(lect);
+					tt.meetings.add(tut);	
+					ttList.add(tt);
+				}				
+			}	
+		}
+		return ttList;
 	}
 	
 }

@@ -15,18 +15,11 @@ public class RateHandler {
 	}
 	
 	
-	public int rating(){
-		
-		return 0;
-		
-		
-	}
+	
 	public int rate(){
 		int score=0;
 		if(this.meetingList!=null)
 			score=calcDays()+timeDiff()+countMorningLesson()+countNightLesson();
-		else
-			score=0;
 		
 		return score;
 	}
@@ -44,7 +37,7 @@ public class RateHandler {
 	 * returns time to be spent on the same day
 	 * @return
 	 */
-	private int timeDiff(){
+	public int timeDiff(){
 			
 		Date firstClass[]=new Date[7];	//startTime of first class of the day
 		Date lastClass[]=new Date[7];	//startTime of the last class of the day
@@ -55,9 +48,8 @@ public class RateHandler {
 		
 		for (Meeting e: meetingList){
 			int dayInArray=e.getDay().getValue()-1;
-			System.out.println("day: "+dayInArray);
 			int diff=(int)(((e.getEndDateTime().getTime()-e.getStartDateTime().getTime())/1000/60+10)/60);
-			System.out.println("diff: "+diff);
+
 			
 			///////////////////////////////////////////////////////////
 			//consider case:
@@ -88,7 +80,9 @@ public class RateHandler {
 			}else if(e.getStartDateTime().after(firstClass[dayInArray])){
 				if (lastClass[dayInArray]!=null){
 					if (e.getStartDateTime().before(lastClass[dayInArray])){
+						
 						duration[dayInArray]+=diff;
+						
 					}else{
 						duration[dayInArray]+=lastLength[dayInArray];
 						lastLength[dayInArray]=diff;
@@ -105,20 +99,20 @@ public class RateHandler {
 		
 		int totalDiff=0;
 		for (int i=0;i<7;i++){
+			
 			int dura;
 			if (lastClass[i]==null){
 				dura=0;
-				System.out.println("dura:"+ dura);
 			}else{
-				dura=(int) (((lastClass[i].getTime()-firstClass[i].getTime())/1000/60+10)/60-firstLength[i]-duration[i]);
-				System.out.println("duraLastFirst:"+ dura);
+				dura=(int) (((lastClass[i].getTime()-firstClass[i].getTime())/1000/60+10)/60-firstLength[i]-duration[i]);		
 			}
 			
 			totalDiff+=dura;
 		}
 		
-		System.out.println("result:"+ totalDiff);
+		
 		return totalDiff;
+		
 	}
 	
 
