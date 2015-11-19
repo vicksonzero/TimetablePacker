@@ -8,46 +8,45 @@ import java.util.ArrayList;
 import org.junit.Test;
 
 import timetableGen.*;
+import timetableGen.rating.*;
 import timetableGen.meeting.Meeting;
-import timetableGen.rating.RateHandler;
 
 public class TestRating {
 
 	@Test
 	//No Lesson
 	public void testNoLesson() {
-		Meeting m ;
-		ArrayList<Meeting> meetingList=new ArrayList<>();
+		ArrayList<Meeting> meetingList=new ArrayList<Meeting>();
 		RateHandler rating = new RateHandler(meetingList);
 		int score = rating.rate();
-		assertEquals(score,0);
+		assertEquals(score,0);		
 	}
 	
 	@Test
 	//One Day Off; No Time Diff; No Morning lesson; No Night Lesson
 	public void testOneDayOff() throws ParseException {
 		Meeting m ;
-		ArrayList<Meeting> meetingList=new ArrayList<>();
+		ArrayList<Meeting> meetingList=new ArrayList<Meeting>();
 		
 		
 			m = new Meeting(0, null, Day.MONDAY, "10:00", "11:50", null, null, null);
 			meetingList.add(m);
-			System.out.println("1");
+			
 			m = new Meeting(0, null,Day.TUESDAY, "10:00", "11:50", null, null, null);
 			meetingList.add(m);
-			System.out.println("2");	
+			
 			m = new Meeting(0, null,Day.WEDNESDAY, "10:00", "11:50",null, null, null);
 			meetingList.add(m);
-			System.out.println("3");
+		
 			m = new Meeting(0, null,Day.THURSDAY, "10:00", "11:50",null, null, null);
 			meetingList.add(m);
-			System.out.println("4");
+			
 			m = new Meeting(0, null,Day.FRIDAY, "10:00", "11:50",null, null, null);
 			meetingList.add(m);
-			System.out.println("5");
+			
 			m = new Meeting(0, null,Day.SATURDAY, "10:00", "11:50",null, null, null);
 			meetingList.add(m);
-			System.out.println("6");
+			
 			
 			RateHandler rating = new RateHandler(meetingList);
 			int score = rating.rate();
@@ -83,7 +82,7 @@ public class TestRating {
 		
 		RateHandler rating = new RateHandler(meetingList);
 		int score = rating.rate();
-		assertEquals(score,7+0+7+0);
+		assertEquals(score,7+0+7+0);		
 	}
 	
 	
@@ -120,6 +119,49 @@ public class TestRating {
 		int score = rating.rate();
 		assertEquals(score,8);		
 	}
+	
+	@Test
+	//No Day Off; No Morning lesson; No Night Lesson; Time Diff
+	public void testMoreTimeDiff() {
+		Meeting m ;
+		ArrayList<Meeting> meetingList = new ArrayList<Meeting>();
+			
+		try {
+			m = new Meeting(0, null,Day.MONDAY, "11:00", "12:50",null, null, null);
+			meetingList.add(m);
+			m = new Meeting(0, null,Day.TUESDAY, "11:00", "12:50",null, null, null);
+			meetingList.add(m);
+			m = new Meeting(0, null,Day.WEDNESDAY, "11:00", "12:50",null, null, null);
+			meetingList.add(m);
+			m = new Meeting(0, null,Day.THURSDAY, "11:00", "12:50",null, null, null);
+			meetingList.add(m);
+			//DAY HAVE TIME DIFF
+			m = new Meeting(0, null,Day.FRIDAY, "17:00", "18:50",null, null, null);
+			meetingList.add(m);
+			m = new Meeting(0, null,Day.FRIDAY, "14:00", "14:50",null, null, null);
+			meetingList.add(m);
+			m = new Meeting(0, null,Day.FRIDAY, "11:00", "12:50",null, null, null);
+			meetingList.add(m);
+			m = new Meeting(0, null,Day.FRIDAY, "15:00", "16:50",null, null, null);
+			meetingList.add(m);
+			m = new Meeting(0, null,Day.FRIDAY, "19:00", "21:50",null, null, null);
+			meetingList.add(m);
+			//END
+			m = new Meeting(0, null,Day.SATURDAY, "11:00", "12:50",null, null, null);
+			meetingList.add(m);
+			m = new Meeting(0, null,Day.SUNDAY, "11:00", "12:50",null, null, null);
+			meetingList.add(m);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}				
+
+		//timeDiff=2
+		RateHandler rating = new RateHandler(meetingList);
+		int score = rating.timeDiff();
+		//assertEquals(score,7+2);		
+		assertEquals(score,1);		
+	}		
 	
 	@Test
 	//No Day Off; No Morning lesson;No Night Lesson; Time Diff
@@ -175,7 +217,7 @@ public class TestRating {
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}				
 		
 		//night lesson=2
 		//morning lesson=2

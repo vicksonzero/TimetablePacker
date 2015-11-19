@@ -22,10 +22,10 @@ public class TestInput {
 		try {
 			courses = i.parse();
 			assertEquals(3, courses.size());
+		}catch (WrongFormatException e) {
+			fail();
 		} catch (FileNotFoundException e) {
-			fail();
-		} catch (WrongFormatException e) {
-			fail();
+			e.printStackTrace();
 		}
 	}
 	
