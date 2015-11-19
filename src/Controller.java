@@ -1,5 +1,3 @@
-
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -11,12 +9,12 @@ import timetableGen.Timetable;
 import timetableGen.WrongFormatException;
 import timetableGen.meeting.Course;
 
-public class Controller {
+public class Controller{
 
-	private ArrayList<Timetable> timetables=new ArrayList<Timetable>();
+	private static ArrayList<Timetable> timetables=new ArrayList<Timetable>();
 	//private static final String FILENAME = "input-file.txt";
 	
-	public void main(String args[]) throws FileNotFoundException, WrongFormatException{
+	public static void main(String args[]) throws FileNotFoundException, WrongFormatException, NoInputCourseException{
 		Scanner sc=new Scanner(System.in);
 		//Input filepath
 		System.out.println("Please input filepath: ");
@@ -28,6 +26,10 @@ public class Controller {
 		
 		//Process file into arraylist and classes
 		ArrayList<Course> courses=input.parse();		
+		if (courses.size()==0){
+			sc.close();
+			throw new NoInputCourseException("No course is get.");
+		}
 		
 		//generate all combinations with existing lectures and tutorials under courses (conflict of time exist)
 		ArrayList<Timetable> allCombinations=Timetable.genCom(0,courses);
@@ -42,7 +44,7 @@ public class Controller {
 		Collections.sort(timetables,Collections.reverseOrder());
 		
 		for (int i=0;i<3;i++){
-			System.out.println(timetables.get(i));
+			System.out.println("Rank "+(i+1)+": \n" + timetables.get(i));
 		}
 		sc.close();
 	}
