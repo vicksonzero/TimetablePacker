@@ -1,7 +1,6 @@
 package timetableGen.meeting;
 
 import java.text.ParseException;
-import java.util.List;
 
 import timetableGen.Day;
 

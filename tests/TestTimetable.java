@@ -3,12 +3,16 @@
 import static org.junit.Assert.*;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 
 import org.junit.Test;
 
 import timetableGen.Day;
 import timetableGen.Timetable;
+import timetableGen.meeting.Course;
+import timetableGen.meeting.Lecture;
 import timetableGen.meeting.Meeting;
+import timetableGen.meeting.Tutorial;
 
 public class TestTimetable {
 
@@ -130,4 +134,92 @@ public class TestTimetable {
 		assertEquals(result,1);
 		
 	}
+	
+	
+	@Test
+	public void testGenComNoTut() throws ParseException{
+		//public static ArrayList<Timetable> genCom(int i,ArrayList<Course> courses){
+		ArrayList<Course> courses=new ArrayList<Course>();
+		Meeting m1=new Lecture(001, "C01",Day.SATURDAY, "10:00", "11:50",null, null, null);
+		Meeting m2= new Lecture(002, "C02",Day.WEDNESDAY, "10:00", "11:50",null, null, null);
+		//Meeting m3 = new Tutorial(003, "T01",Day.THURSDAY, "10:00", "11:50",null, null, null);
+		Meeting m4=new Lecture(004, "T02",Day.FRIDAY, "10:00", "11:50",null, null, null);
+		
+		Course c1=new Course();
+		Course c2=new Course();
+		
+		c1.lectureList.add((Lecture) m1);
+		c1.lectureList.add((Lecture) m2);
+		
+		c2.lectureList.add((Lecture) m4);
+		
+		courses.add(c1);
+		courses.add(c2);
+		ArrayList<Timetable> result=Timetable.genCom(0, courses);
+		ArrayList<Timetable> expectResult=new ArrayList<Timetable>();
+		Timetable tt1=new Timetable();
+		tt1.meetings.add(m1);
+		
+		tt1.meetings.add(m4);
+		
+		Timetable tt2=new Timetable();
+		tt2.meetings.add(m2);
+		
+		tt2.meetings.add(m4);
+		
+		expectResult.add(tt1);
+		expectResult.add(tt2);
+		
+		assertTrue(expectResult.containsAll(result) && result.containsAll(expectResult));
+	}
+	
+	@Test
+	public void testGenCom() throws ParseException{
+		//public static ArrayList<Timetable> genCom(int i,ArrayList<Course> courses){
+		ArrayList<Course> courses=new ArrayList<Course>();
+		Meeting m1=new Lecture(001, "C01",Day.SATURDAY, "10:00", "11:50",null, null, null);
+		Meeting m2= new Lecture(002, "C02",Day.WEDNESDAY, "10:00", "11:50",null, null, null);
+		Meeting m3 = new Tutorial(003, "T01",Day.THURSDAY, "10:00", "11:50",null, null, null);
+		Meeting m4 =new Lecture(004, "C02",Day.FRIDAY, "10:00", "11:50",null, null, null);
+		Meeting m5 = new Tutorial(005, "T02",Day.THURSDAY, "10:00", "11:50",null, null, null);
+		
+		Course c1=new Course();
+		Course c2=new Course();
+		
+		c1.lectureList.add((Lecture) m1);
+		c1.lectureList.add((Lecture) m2);
+		c1.tutorialList.add((Tutorial) m3);
+		
+		c2.lectureList.add((Lecture) m4);
+		c2.tutorialList.add((Tutorial)m5);
+		
+		courses.add(c1);
+		courses.add(c2);
+		ArrayList<Timetable> result=Timetable.genCom(0, courses);
+		ArrayList<Timetable> expectResult=new ArrayList<Timetable>();
+		Timetable tt1=new Timetable();
+		tt1.meetings.add(m1);
+		tt1.meetings.add(m3);
+		tt1.meetings.add(m4);
+		tt1.meetings.add(m5);
+		
+		Timetable tt2=new Timetable();
+		tt2.meetings.add(m2);
+		tt2.meetings.add(m3);
+		tt2.meetings.add(m4);
+		tt2.meetings.add(m5);
+		
+		expectResult.add(tt1);
+		expectResult.add(tt2);
+		
+		assertTrue(expectResult.containsAll(result) && result.containsAll(expectResult));
+	}
+	
+	/*@Test
+	public void testGenCom0Course() throws ParseException{
+		ArrayList<Course> courses=new ArrayList<Course>();
+		ArrayList<Timetable> result=Timetable.genCom(0, courses);
+		ArrayList<Timetable> expectResult=new ArrayList<Timetable>();
+		assertTrue(expectResult.containsAll(result) && result.containsAll(expectResult));
+	}*/
 }

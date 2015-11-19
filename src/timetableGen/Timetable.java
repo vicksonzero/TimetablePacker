@@ -66,9 +66,9 @@ public class Timetable implements Comparable<Timetable>{
 
 	public static ArrayList<Timetable> genCom(int i,ArrayList<Course> courses){
 		ArrayList<Timetable> ttList=new ArrayList<Timetable>();
-		if(courses.size()==0){
+	/*	if(courses.size()==0){
 			return null;
-		}
+		}*/
 		if (i<courses.size()-1){
 			///////////////////////////////////////////////////////////////
 			//upper cases:
@@ -77,10 +77,20 @@ public class Timetable implements Comparable<Timetable>{
 			//returns grps of timetable
 			/////////////////////////////////////////////////////////////
 			for (Lecture lect:courses.get(i).getLecture()){
-				for (Tutorial tut:courses.get(i).getTutorial()){
+				if(courses.get(i).getTutorial().size()!=0){    //in case the course have no tutorial
+					for (Tutorial tut:courses.get(i).getTutorial()){
+						for (Timetable tt:genCom(i+1,courses)){
+							Timetable t=new Timetable();
+							t.meetings.add(tut);
+							t.meetings.add(lect);
+							for (Meeting m:tt.meetings)
+								t.meetings.add(m);
+							ttList.add(t);
+						};
+					}
+				}else{
 					for (Timetable tt:genCom(i+1,courses)){
 						Timetable t=new Timetable();
-						t.meetings.add(tut);
 						t.meetings.add(lect);
 						for (Meeting m:tt.meetings)
 							t.meetings.add(m);
@@ -97,15 +107,38 @@ public class Timetable implements Comparable<Timetable>{
 			////////////////////////////////////////////////////////////
 			Course c=courses.get(i);
 			for (Lecture lect:c.getLecture()){
-				for (Tutorial tut:c.getTutorial()){
+				if(c.getTutorial().size()!=0){  //in case the course have no tutorial
+					for (Tutorial tut:c.getTutorial()){
+						Timetable tt=new Timetable();
+						tt.meetings.add(lect);
+						tt.meetings.add(tut);	
+						ttList.add(tt);
+					}	
+				}else{
 					Timetable tt=new Timetable();
 					tt.meetings.add(lect);
-					tt.meetings.add(tut);	
 					ttList.add(tt);
-				}				
+				}
 			}	
 		}
 		return ttList;
+	}
+	
+	
+	@Override
+	public boolean equals(Object object){
+		Timetable o2=(Timetable)object;
+		if (this.meetings.containsAll(o2.meetings)&&o2.meetings.containsAll(this.meetings))
+			return true;
+		return false;
+	}
+	
+	@Override
+	public String toString(){
+		String result = "";
+		for (Meeting m:this.meetings)
+			result+=m.toString()+"\n";
+		return result;
 	}
 	
 }
