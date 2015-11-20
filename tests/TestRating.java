@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import org.junit.Test;
 
 import timetableGen.*;
-import timetableGen.rating.*;
+import timetableGen.Rating.*;
 import timetableGen.meeting.Meeting;
 
 public class TestRating {

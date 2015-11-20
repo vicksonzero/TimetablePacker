@@ -1,4 +1,4 @@
-package timetableGen.rating;
+package timetableGen.Rating;
 
 import java.util.ArrayList;
 import java.util.Calendar;

@@ -8,7 +8,7 @@ import timetableGen.meeting.Course;
 import timetableGen.meeting.Lecture;
 import timetableGen.meeting.Meeting;
 import timetableGen.meeting.Tutorial;
-import timetableGen.rating.RateHandler;
+import timetableGen.Rating.RateHandler;
 
 
 public class Timetable implements Comparable<Timetable>{
