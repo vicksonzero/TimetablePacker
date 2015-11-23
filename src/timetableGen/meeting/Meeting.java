@@ -4,7 +4,11 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Meeting implements Comparable<Meeting>{
+import timetableGen.Course;
+import timetableGen.EmptyCourse;
+
+public abstract class Meeting implements Comparable<Meeting>{
+	private Course parentCourse = EmptyCourse.getInstance();
 	private int crn;
     private String sessionType;
     private String campus;
@@ -31,6 +35,17 @@ public class Meeting implements Comparable<Meeting>{
 		this.endDateTime = sdf.parse(s+" "+endTimeString);
 		this.day=dayOfWeek;
 	}
+	
+	public static Meeting create(int crn, String sessionType,Day dayOfWeek, String startTimeString, String endTimeString, String campus, String room, String instructor) throws ParseException{
+		if(sessionType.charAt(0) == 'C'){
+			return new Lecture(crn, sessionType, dayOfWeek, startTimeString, endTimeString,
+					campus, room, instructor);
+		}else if(sessionType.charAt(0) == 'T'){
+			return new Tutorial(crn, sessionType, dayOfWeek, startTimeString, endTimeString,
+					campus, room, instructor);
+		}
+		return null;
+	}
 
 	public Day getDay() {
 		return this.day;
@@ -44,7 +59,19 @@ public class Meeting implements Comparable<Meeting>{
 	@Override
     public String toString() 
     {
-        return "CRN: "+ this.crn + " Sesion: "+ this.sessionType + " Time: "+ this.startDateTime + " - " + this.endDateTime + " Campus: "+ this.campus + " Room: "+ this.room + " Instructor: "+ this.instructor;
+		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+		int crn = this.crn;
+		String course = this.parentCourse.getCode(),
+				session = this.sessionType,
+				day = this.day.toString(),
+				startTime = sdf.format(this.startDateTime),
+				endTime = sdf.format(this.endDateTime),
+				campus = this.campus,
+				room = this.room,
+				instructorName = this.instructor;
+		return String.format("CRN: %d | Course: %s | Session: %s | Day: %s | Time: %s-%s | Campus: %s | Room: %s | Instructor: %s", 
+				crn, course, session, day, startTime, endTime, campus, room, instructorName);
+        //return "CRN: "+ this.crn + " Sesion: "+ this.sessionType + " Time: "+ this.startDateTime + " - " + this.endDateTime + " Campus: "+ this.campus + " Room: "+ this.room + " Instructor: "+ this.instructor;
     }
 	
 	public Date getStartDateTime() {
@@ -53,6 +80,12 @@ public class Meeting implements Comparable<Meeting>{
 
 	public Date getEndDateTime() {
 		return this.endDateTime;
+	}
+	
+	public Meeting setCourse(Course course){
+		
+		this.parentCourse = course;
+		return this;
 	}
 	
 

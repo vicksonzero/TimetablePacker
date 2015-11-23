@@ -24,16 +24,16 @@ public class TestTimetable {
 		Meeting m;
 		
 		
-		m = new Meeting(0, null, Day.MONDAY, "09:00", "10:50", null, null, null);
+		m = Meeting.create(0, "T01", Day.MONDAY, "09:00", "10:50", null, null, null);
 		tt.getMeetings().add(m);
 
-		m = new Meeting(0, null, Day.MONDAY, "11:00", "12:50", null, null, null);
+		m = Meeting.create(0, "T01", Day.MONDAY, "11:00", "12:50", null, null, null);
 		tt.getMeetings().add(m);
 
-		m = new Meeting(0, null, Day.MONDAY, "13:00", "13:50", null, null, null);
+		m = Meeting.create(0, "T01", Day.MONDAY, "13:00", "13:50", null, null, null);
 		tt.getMeetings().add(m);
 
-		m = new Meeting(0, null, Day.MONDAY, "14:00", "15:50", null, null, null);
+		m = Meeting.create(0, "T01", Day.MONDAY, "14:00", "15:50", null, null, null);
 		tt.getMeetings().add(m);
 		
 		assertTrue("timetable should have no conflicts", !tt.hasConflict());
@@ -45,16 +45,16 @@ public class TestTimetable {
 		Meeting m;
 		
 		
-		m = new Meeting(0, null, Day.MONDAY, "09:00", "10:50", null, null, null);
+		m = Meeting.create(0, "T01", Day.MONDAY, "09:00", "10:50", null, null, null);
 		tt.getMeetings().add(m);
 
-		m = new Meeting(0, null, Day.MONDAY, "10:00", "12:50", null, null, null);
+		m = Meeting.create(0, "T01", Day.MONDAY, "10:00", "12:50", null, null, null);
 		tt.getMeetings().add(m);
 
-		m = new Meeting(0, null, Day.MONDAY, "13:00", "13:50", null, null, null);
+		m = Meeting.create(0, "T01", Day.MONDAY, "13:00", "13:50", null, null, null);
 		tt.getMeetings().add(m);
 
-		m = new Meeting(0, null, Day.MONDAY, "14:00", "15:50", null, null, null);
+		m = Meeting.create(0, "T01", Day.MONDAY, "14:00", "15:50", null, null, null);
 		tt.getMeetings().add(m);
 		
 		assertTrue("timetable should have conflicts", tt.hasConflict());
@@ -66,16 +66,16 @@ public class TestTimetable {
 		Meeting m;
 		
 		
-		m = new Meeting(0, null, Day.MONDAY, "09:00", "10:50", null, null, null);
+		m = Meeting.create(0, "T01", Day.MONDAY, "09:00", "10:50", null, null, null);
 		tt.getMeetings().add(m);
 
-		m = new Meeting(0, null, Day.MONDAY, "11:00", "12:00", null, null, null);
+		m = Meeting.create(0, "T01", Day.MONDAY, "11:00", "12:00", null, null, null);
 		tt.getMeetings().add(m);
 
-		m = new Meeting(0, null, Day.TUESDAY, "10:00", "11:50", null, null, null);
+		m = Meeting.create(0, "T01", Day.TUESDAY, "10:00", "11:50", null, null, null);
 		tt.getMeetings().add(m);
 
-		m = new Meeting(0, null, Day.TUESDAY, "12:00", "15:00", null, null, null);
+		m = Meeting.create(0, "T01", Day.TUESDAY, "12:00", "15:00", null, null, null);
 		tt.getMeetings().add(m);
 		
 		assertTrue("timetable should have no conflicts", !tt.hasConflict());
@@ -87,16 +87,16 @@ public class TestTimetable {
 		Meeting m;
 		
 		try {
-			m = new Meeting(0, null, Day.MONDAY, "09:00","10:50", null, null, null);
+			m = Meeting.create(0, "T01", Day.MONDAY, "09:00","10:50", null, null, null);
 			tt.getMeetings().add(m);
 
-			m = new Meeting(0, null, Day.MONDAY, "11:00", "12:00", null, null, null);
+			m = Meeting.create(0, "T01", Day.MONDAY, "11:00", "12:00", null, null, null);
 			tt.getMeetings().add(m);
 
-			m = new Meeting(0, null, Day.TUESDAY, "10:00", "11:50", null, null, null);
+			m = Meeting.create(0, "T01", Day.TUESDAY, "10:00", "11:50", null, null, null);
 			tt.getMeetings().add(m);
 
-			m = new Meeting(0, null, Day.TUESDAY, "11:00", "15:00", null, null, null);
+			m = Meeting.create(0, "T01", Day.TUESDAY, "11:00", "15:00", null, null, null);
 			tt.getMeetings().add(m);
 			
 		} catch (ParseException e) {
@@ -115,17 +115,17 @@ public class TestTimetable {
 		Meeting m;
 		
 		try{
-			m = new Meeting(0, null, Day.MONDAY, "10:00", "11:50", null, null, null);
+			m = Meeting.create(0, "T01", Day.MONDAY, "10:00", "11:50", null, null, null);
 			tt1.getMeetings().add(m);
-			m = new Meeting(0, null,Day.TUESDAY, "10:00", "11:50", null, null, null);
+			m = Meeting.create(0, "T01",Day.TUESDAY, "10:00", "11:50", null, null, null);
 			tt1.getMeetings().add(m);		
-			m = new Meeting(0, null,Day.WEDNESDAY, "10:00", "11:50",null, null, null);
+			m = Meeting.create(0, "T01",Day.WEDNESDAY, "10:00", "11:50",null, null, null);
 			tt1.getMeetings().add(m);
-			m = new Meeting(0, null,Day.THURSDAY, "10:00", "11:50",null, null, null);
+			m = Meeting.create(0, "T01",Day.THURSDAY, "10:00", "11:50",null, null, null);
 			tt1.getMeetings().add(m);		
-			m = new Meeting(0, null,Day.FRIDAY, "10:00", "11:50",null, null, null);
+			m = Meeting.create(0, "T01",Day.FRIDAY, "10:00", "11:50",null, null, null);
 			tt1.getMeetings().add(m);	
-			m = new Meeting(0, null,Day.SATURDAY, "10:00", "11:50",null, null, null);
+			m = Meeting.create(0, "T01",Day.SATURDAY, "10:00", "11:50",null, null, null);
 			tt1.getMeetings().add(m);
 		} catch (ParseException e) {
 			e.printStackTrace();
@@ -149,10 +149,10 @@ public class TestTimetable {
 		Course c1=new Course("12345");
 		Course c2=new Course("22345");
 		
-		c1.getLecture().add((Lecture) m1);
-		c1.getLecture().add((Lecture) m2);
+		c1.addLecture((Lecture) m1)
+			.addLecture((Lecture) m2);
 		
-		c2.getLecture().add((Lecture) m4);
+		c2.addLecture((Lecture) m4);
 		
 		courses.add(c1);
 		courses.add(c2);
@@ -187,12 +187,12 @@ public class TestTimetable {
 		Course c1=new Course("12345");
 		Course c2=new Course("22345");
 		
-		c1.getLecture().add((Lecture) m1);
-		c1.getLecture().add((Lecture) m2);
-		c1.getTutorial().add((Tutorial) m3);
+		c1.addLecture((Lecture) m1)
+			.addLecture((Lecture) m2)
+			.addTutorial((Tutorial) m3);
 		
-		c2.getLecture().add((Lecture) m4);
-		c2.getTutorial().add((Tutorial)m5);
+		c2.addLecture((Lecture) m4)
+			.addTutorial((Tutorial)m5);
 		
 		courses.add(c1);
 		courses.add(c2);
@@ -227,10 +227,10 @@ public class TestTimetable {
 		String campus="MMW";
 		String room="1411";
 		String instructor="LI Shuaicheng";
-		Meeting m=new Meeting(crn,  sessionType, dayofWeek,  startTimeString,  endTimeString,  campus,  room,  instructor);
+		Meeting m=Meeting.create(crn,  sessionType, dayofWeek,  startTimeString,  endTimeString,  campus,  room,  instructor);
 		
 		int crn2=45070;
-		Meeting m2=new Meeting(crn2,  sessionType, dayofWeek,  startTimeString,  endTimeString,  campus,  room,  instructor);
+		Meeting m2=Meeting.create(crn2,  sessionType, dayofWeek,  startTimeString,  endTimeString,  campus,  room,  instructor);
 		
 		tt.getMeetings().add(m);
 		tt.getMeetings().add(m2);
@@ -250,10 +250,10 @@ public class TestTimetable {
 		String campus="MMW";
 		String room="1411";
 		String instructor="LI Shuaicheng";
-		Meeting m=new Meeting(crn,  sessionType, dayofWeek,  startTimeString,  endTimeString,  campus,  room,  instructor);
+		Meeting m=Meeting.create(crn,  sessionType, dayofWeek,  startTimeString,  endTimeString,  campus,  room,  instructor);
 		
 		int crn2=45070;
-		Meeting m2=new Meeting(crn2,  sessionType, dayofWeek,  startTimeString,  endTimeString,  campus,  room,  instructor);
+		Meeting m2=Meeting.create(crn2,  sessionType, dayofWeek,  startTimeString,  endTimeString,  campus,  room,  instructor);
 		
 		tt.getMeetings().add(m);
 		tt.getMeetings().add(m2);

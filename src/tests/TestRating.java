@@ -31,22 +31,22 @@ public class TestRating {
 		ArrayList<Meeting> meetingList=new ArrayList<Meeting>();
 		
 		
-			m = new Meeting(0, null, Day.MONDAY, "10:00", "11:50", null, null, null);
+			m = Meeting.create(0, "T01", Day.MONDAY, "10:00", "11:50", null, null, null);
 			meetingList.add(m);
 			
-			m = new Meeting(0, null,Day.TUESDAY, "10:00", "11:50", null, null, null);
+			m = Meeting.create(0, "T01",Day.TUESDAY, "10:00", "11:50", null, null, null);
 			meetingList.add(m);
 			
-			m = new Meeting(0, null,Day.WEDNESDAY, "10:00", "11:50",null, null, null);
+			m = Meeting.create(0, "T01",Day.WEDNESDAY, "10:00", "11:50",null, null, null);
 			meetingList.add(m);
 		
-			m = new Meeting(0, null,Day.THURSDAY, "10:00", "11:50",null, null, null);
+			m = Meeting.create(0, "T01",Day.THURSDAY, "10:00", "11:50",null, null, null);
 			meetingList.add(m);
 			
-			m = new Meeting(0, null,Day.FRIDAY, "10:00", "11:50",null, null, null);
+			m = Meeting.create(0, "T01",Day.FRIDAY, "10:00", "11:50",null, null, null);
 			meetingList.add(m);
 			
-			m = new Meeting(0, null,Day.SATURDAY, "10:00", "11:50",null, null, null);
+			m = Meeting.create(0, "T01",Day.SATURDAY, "10:00", "11:50",null, null, null);
 			meetingList.add(m);
 			
 			
@@ -62,17 +62,17 @@ public class TestRating {
 		ArrayList<Meeting> meetingList = new ArrayList<Meeting>();
 		
 		try{
-			m = new Meeting(0, null, Day.MONDAY, "09:00", "11:50",null, null, null);
+			m = Meeting.create(0, "T01", Day.MONDAY, "09:00", "11:50",null, null, null);
 			meetingList.add(m);
-			m = new Meeting(0, null, Day.TUESDAY, "09:00", "11:50",null, null, null);
+			m = Meeting.create(0, "T01", Day.TUESDAY, "09:00", "11:50",null, null, null);
 			meetingList.add(m);
-			m = new Meeting(0, null, Day.WEDNESDAY, "09:00", "11:50",null, null, null);
+			m = Meeting.create(0, "T01", Day.WEDNESDAY, "09:00", "11:50",null, null, null);
 			meetingList.add(m);
-			m = new Meeting(0, null, Day.THURSDAY, "09:00", "11:50",null, null, null);
+			m = Meeting.create(0, "T01", Day.THURSDAY, "09:00", "11:50",null, null, null);
 			meetingList.add(m);
-			m = new Meeting(0, null, Day.FRIDAY, "09:00", "11:50",null, null, null);
+			m = Meeting.create(0, "T01", Day.FRIDAY, "09:00", "11:50",null, null, null);
 			meetingList.add(m);
-			m = new Meeting(0, null, Day.SATURDAY, "09:00", "11:50",null, null, null);
+			m = Meeting.create(0, "T01", Day.SATURDAY, "09:00", "11:50",null, null, null);
 			meetingList.add(m);
 			
 		
@@ -96,19 +96,19 @@ public class TestRating {
 		ArrayList<Meeting> meetingList = new ArrayList<Meeting>();
 		
 		try {
-			m = new Meeting(0, null, Day.MONDAY, "10:00", "11:50",null, null, null);
+			m = Meeting.create(0, "T01", Day.MONDAY, "10:00", "11:50",null, null, null);
 			meetingList.add(m);
-			m = new Meeting(0, null, Day.MONDAY, "13:00", "14:50",null, null, null);;
+			m = Meeting.create(0, "T01", Day.MONDAY, "13:00", "14:50",null, null, null);;
 			meetingList.add(m);
-			m = new Meeting(0, null, Day.TUESDAY, "10:00", "11:50",null, null, null);;
+			m = Meeting.create(0, "T01", Day.TUESDAY, "10:00", "11:50",null, null, null);;
 			meetingList.add(m);
-			m = new Meeting(0, null, Day.WEDNESDAY, "10:00", "11:50",null, null, null);
+			m = Meeting.create(0, "T01", Day.WEDNESDAY, "10:00", "11:50",null, null, null);
 			meetingList.add(m);
-			m = new Meeting(0, null, Day.THURSDAY, "10:00", "11:50",null, null, null);
+			m = Meeting.create(0, "T01", Day.THURSDAY, "10:00", "11:50",null, null, null);
 			meetingList.add(m);
-			m = new Meeting(0, null, Day.FRIDAY, "10:00", "11:50",null, null, null);
+			m = Meeting.create(0, "T01", Day.FRIDAY, "10:00", "11:50",null, null, null);
 			meetingList.add(m);
-			m = new Meeting(0, null, Day.SATURDAY, "10:00", "11:50",null, null, null);
+			m = Meeting.create(0, "T01", Day.SATURDAY, "10:00", "11:50",null, null, null);
 			meetingList.add(m);
 			
 		} catch (ParseException e) {
@@ -127,27 +127,27 @@ public class TestRating {
 		ArrayList<Meeting> meetingList = new ArrayList<Meeting>();
 			
 		try {
-			m = new Meeting(0, null,Day.MONDAY, "11:00", "12:50",null, null, null);
+			m = Meeting.create(0, "T01",Day.MONDAY, "11:00", "12:50",null, null, null);
 			meetingList.add(m);
-			m = new Meeting(0, null,Day.TUESDAY, "11:00", "12:50",null, null, null);
+			m = Meeting.create(0, "T01",Day.TUESDAY, "11:00", "12:50",null, null, null);
 			meetingList.add(m);
-			m = new Meeting(0, null,Day.WEDNESDAY, "11:00", "12:50",null, null, null);
+			m = Meeting.create(0, "T01",Day.WEDNESDAY, "11:00", "12:50",null, null, null);
 			meetingList.add(m);
-			m = new Meeting(0, null,Day.THURSDAY, "11:00", "12:50",null, null, null);
+			m = Meeting.create(0, "T01",Day.THURSDAY, "11:00", "12:50",null, null, null);
 			meetingList.add(m);
 			//DAY HAVE TIME DIFF
-			m = new Meeting(0, null,Day.FRIDAY, "17:00", "18:50",null, null, null);
+			m = Meeting.create(0, "T01",Day.FRIDAY, "17:00", "18:50",null, null, null);
 			meetingList.add(m);
-			m = new Meeting(0, null,Day.FRIDAY, "14:00", "14:50",null, null, null);
+			m = Meeting.create(0, "T01",Day.FRIDAY, "14:00", "14:50",null, null, null);
 			meetingList.add(m);
-			m = new Meeting(0, null,Day.FRIDAY, "11:00", "12:50",null, null, null);
+			m = Meeting.create(0, "T01",Day.FRIDAY, "11:00", "12:50",null, null, null);
 			meetingList.add(m);
-			m = new Meeting(0, null,Day.FRIDAY, "15:00", "16:50",null, null, null);
+			m = Meeting.create(0, "T01",Day.FRIDAY, "15:00", "16:50",null, null, null);
 			meetingList.add(m);
-			m = new Meeting(0, null,Day.FRIDAY, "19:00", "21:50",null, null, null);
+			m = Meeting.create(0, "T01",Day.FRIDAY, "19:00", "21:50",null, null, null);
 			meetingList.add(m);
 			//END
-			m = new Meeting(0, null,Day.SATURDAY, "11:00", "12:50",null, null, null);
+			m = Meeting.create(0, "T01",Day.SATURDAY, "11:00", "12:50",null, null, null);
 			meetingList.add(m);
 			
 		} catch (ParseException e) {
@@ -170,17 +170,17 @@ public class TestRating {
 		
 		
 		try {
-			m = new Meeting(0, null,Day.MONDAY, "19:00", "20:50",null, null, null);
+			m = Meeting.create(0, "T01",Day.MONDAY, "19:00", "20:50",null, null, null);
 			meetingList.add(m);
-			m = new Meeting(0, null,Day.TUESDAY, "19:00", "20:50",null, null, null);
+			m = Meeting.create(0, "T01",Day.TUESDAY, "19:00", "20:50",null, null, null);
 			meetingList.add(m);
-			m = new Meeting(0, null,Day.WEDNESDAY, "19:00", "20:50",null, null, null);
+			m = Meeting.create(0, "T01",Day.WEDNESDAY, "19:00", "20:50",null, null, null);
 			meetingList.add(m);
-			m = new Meeting(0, null,Day.THURSDAY, "19:00", "20:50",null, null, null);
+			m = Meeting.create(0, "T01",Day.THURSDAY, "19:00", "20:50",null, null, null);
 			meetingList.add(m);
-			m = new Meeting(0, null,Day.FRIDAY, "19:00", "20:50",null, null, null);
+			m = Meeting.create(0, "T01",Day.FRIDAY, "19:00", "20:50",null, null, null);
 			meetingList.add(m);
-			m = new Meeting(0, null,Day.SATURDAY, "19:00", "20:50",null, null, null);
+			m = Meeting.create(0, "T01",Day.SATURDAY, "19:00", "20:50",null, null, null);
 			meetingList.add(m);
 			
 		} catch (ParseException e) {
@@ -200,17 +200,17 @@ public class TestRating {
 		ArrayList<Meeting> meetingList = new ArrayList<Meeting>();
 			
 		try {
-			m = new Meeting(0, null,Day.MONDAY, "09:00", "12:50",null, null, null);
+			m = Meeting.create(0, "T01",Day.MONDAY, "09:00", "12:50",null, null, null);
 			meetingList.add(m);
-			m = new Meeting(0, null,Day.TUESDAY, "09:00", "12:50",null, null, null);
+			m = Meeting.create(0, "T01",Day.TUESDAY, "09:00", "12:50",null, null, null);
 			meetingList.add(m);
-			m = new Meeting(0, null,Day.WEDNESDAY, "10:00", "11:50",null, null, null);
+			m = Meeting.create(0, "T01",Day.WEDNESDAY, "10:00", "11:50",null, null, null);
 			meetingList.add(m);
-			m = new Meeting(0, null,Day.WEDNESDAY, "15:00", "16:50",null, null, null);
+			m = Meeting.create(0, "T01",Day.WEDNESDAY, "15:00", "16:50",null, null, null);
 			meetingList.add(m);
-			m = new Meeting(0, null,Day.THURSDAY, "19:00", "20:50",null, null, null);
+			m = Meeting.create(0, "T01",Day.THURSDAY, "19:00", "20:50",null, null, null);
 			meetingList.add(m);
-			m = new Meeting(0, null,Day.FRIDAY, "19:00", "20:50",null, null, null);
+			m = Meeting.create(0, "T01",Day.FRIDAY, "19:00", "20:50",null, null, null);
 			meetingList.add(m);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block

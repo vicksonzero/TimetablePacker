@@ -23,6 +23,18 @@ public class Course {
 		return this.tutorialList;
 	}
 	
+	public Course addLecture(Lecture lect){
+		this.lectureList.add(lect);
+		lect.setCourse(this);
+		return this;
+	}
+	
+	public Course addTutorial(Tutorial tut){
+		this.tutorialList.add(tut);
+		tut.setCourse(this);
+		return this;
+	}
+	
 	public String getCode(){
 		return this.courseCode;
 	}
