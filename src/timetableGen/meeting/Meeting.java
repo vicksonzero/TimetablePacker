@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Meeting implements Comparable<Meeting>{
+	private String courseCode;
 	private int crn;
     private String sessionType;
     private String campus;
@@ -14,8 +15,9 @@ public class Meeting implements Comparable<Meeting>{
 	private Date startDateTime;
 	private Date endDateTime;
 	
-	public Meeting(int crn, String sessionType,Day dayOfWeek, String startTimeString, String endTimeString, String campus, String room, String instructor) throws ParseException{
+	public Meeting(int crn, String courseCode, String sessionType,Day dayOfWeek, String startTimeString, String endTimeString, String campus, String room, String instructor) throws ParseException{
 		this.crn = crn;
+		this.courseCode = courseCode;
     	this.sessionType = sessionType;
         this.campus = campus;
         this.room = room;
@@ -44,7 +46,19 @@ public class Meeting implements Comparable<Meeting>{
 	@Override
     public String toString() 
     {
-        return "CRN: "+ this.crn + " Sesion: "+ this.sessionType + " Time: "+ this.startDateTime + " - " + this.endDateTime + " Campus: "+ this.campus + " Room: "+ this.room + " Instructor: "+ this.instructor;
+		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+		int crn = this.crn;
+		String course = this.courseCode,
+				session = this.sessionType,
+				day = this.day.toString(),
+				startTime = sdf.format(this.startDateTime),
+				endTime = sdf.format(this.endDateTime),
+				campus = this.campus,
+				room = this.room,
+				instructorName = this.instructor;
+		return String.format("CRN: %d | Course: %s | Session: %s | Day: %s | Time: %s-%s | Campus: %s | Room: %s | Instructor: %s", 
+				crn, course, session, day, startTime, endTime, campus, room, instructorName);
+        //return "CRN: "+ this.crn + " Sesion: "+ this.sessionType + " Time: "+ this.startDateTime + " - " + this.endDateTime + " Campus: "+ this.campus + " Room: "+ this.room + " Instructor: "+ this.instructor;
     }
 	
 	public Date getStartDateTime() {

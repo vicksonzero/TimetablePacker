@@ -81,7 +81,7 @@ public class Input {
 		String[] timeParts =  data[11].split(" - ");
 		if(data[1].charAt(0) == 'C'){
 			try {
-				currentCourse.getLecture().add(new Lecture(Integer.parseInt(data[0]), data[1], Day.stringToDay(data[10]), timeParts[0], timeParts[1], data[12], data[13], data[14]));
+				currentCourse.getLecture().add(new Lecture(Integer.parseInt(data[0]), currentCourse.getCode(), data[1], Day.stringToDay(data[10]), timeParts[0], timeParts[1], data[12], data[13], data[14]));
 			} catch (NumberFormatException e) {
 				throw new WrongFormatException("CRN should be a number");
 			} catch (ParseException e) {
@@ -89,7 +89,7 @@ public class Input {
 			}
 		}else if(data[1].charAt(0) == 'T'){
 			try {
-				currentCourse.getTutorial().add(new Tutorial(Integer.parseInt(data[0]), data[1], Day.stringToDay(data[10]), timeParts[0], timeParts[1], data[12], data[13], data[14]));
+				currentCourse.getTutorial().add(new Tutorial(Integer.parseInt(data[0]), currentCourse.getCode(), data[1], Day.stringToDay(data[10]), timeParts[0], timeParts[1], data[12], data[13], data[14]));
 			} catch (NumberFormatException e) {
 				throw new WrongFormatException("CRN should be a number");
 			} catch (ParseException e) {

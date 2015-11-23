@@ -24,16 +24,16 @@ public class TestTimetable {
 		Meeting m;
 		
 		
-		m = new Meeting(0, null, Day.MONDAY, "09:00", "10:50", null, null, null);
+		m = new Meeting(0, "", null, Day.MONDAY, "09:00", "10:50", null, null, null);
 		tt.getMeetings().add(m);
 
-		m = new Meeting(0, null, Day.MONDAY, "11:00", "12:50", null, null, null);
+		m = new Meeting(0, "", null, Day.MONDAY, "11:00", "12:50", null, null, null);
 		tt.getMeetings().add(m);
 
-		m = new Meeting(0, null, Day.MONDAY, "13:00", "13:50", null, null, null);
+		m = new Meeting(0, "", null, Day.MONDAY, "13:00", "13:50", null, null, null);
 		tt.getMeetings().add(m);
 
-		m = new Meeting(0, null, Day.MONDAY, "14:00", "15:50", null, null, null);
+		m = new Meeting(0, "", null, Day.MONDAY, "14:00", "15:50", null, null, null);
 		tt.getMeetings().add(m);
 		
 		assertTrue("timetable should have no conflicts", !tt.hasConflict());
@@ -45,16 +45,16 @@ public class TestTimetable {
 		Meeting m;
 		
 		
-		m = new Meeting(0, null, Day.MONDAY, "09:00", "10:50", null, null, null);
+		m = new Meeting(0, "", null, Day.MONDAY, "09:00", "10:50", null, null, null);
 		tt.getMeetings().add(m);
 
-		m = new Meeting(0, null, Day.MONDAY, "10:00", "12:50", null, null, null);
+		m = new Meeting(0, "", null, Day.MONDAY, "10:00", "12:50", null, null, null);
 		tt.getMeetings().add(m);
 
-		m = new Meeting(0, null, Day.MONDAY, "13:00", "13:50", null, null, null);
+		m = new Meeting(0, "", null, Day.MONDAY, "13:00", "13:50", null, null, null);
 		tt.getMeetings().add(m);
 
-		m = new Meeting(0, null, Day.MONDAY, "14:00", "15:50", null, null, null);
+		m = new Meeting(0, "", null, Day.MONDAY, "14:00", "15:50", null, null, null);
 		tt.getMeetings().add(m);
 		
 		assertTrue("timetable should have conflicts", tt.hasConflict());
@@ -66,16 +66,16 @@ public class TestTimetable {
 		Meeting m;
 		
 		
-		m = new Meeting(0, null, Day.MONDAY, "09:00", "10:50", null, null, null);
+		m = new Meeting(0, "", null, Day.MONDAY, "09:00", "10:50", null, null, null);
 		tt.getMeetings().add(m);
 
-		m = new Meeting(0, null, Day.MONDAY, "11:00", "12:00", null, null, null);
+		m = new Meeting(0, "", null, Day.MONDAY, "11:00", "12:00", null, null, null);
 		tt.getMeetings().add(m);
 
-		m = new Meeting(0, null, Day.TUESDAY, "10:00", "11:50", null, null, null);
+		m = new Meeting(0, "", null, Day.TUESDAY, "10:00", "11:50", null, null, null);
 		tt.getMeetings().add(m);
 
-		m = new Meeting(0, null, Day.TUESDAY, "12:00", "15:00", null, null, null);
+		m = new Meeting(0, "", null, Day.TUESDAY, "12:00", "15:00", null, null, null);
 		tt.getMeetings().add(m);
 		
 		assertTrue("timetable should have no conflicts", !tt.hasConflict());
@@ -87,16 +87,16 @@ public class TestTimetable {
 		Meeting m;
 		
 		try {
-			m = new Meeting(0, null, Day.MONDAY, "09:00","10:50", null, null, null);
+			m = new Meeting(0, "", null, Day.MONDAY, "09:00","10:50", null, null, null);
 			tt.getMeetings().add(m);
 
-			m = new Meeting(0, null, Day.MONDAY, "11:00", "12:00", null, null, null);
+			m = new Meeting(0, "", null, Day.MONDAY, "11:00", "12:00", null, null, null);
 			tt.getMeetings().add(m);
 
-			m = new Meeting(0, null, Day.TUESDAY, "10:00", "11:50", null, null, null);
+			m = new Meeting(0, "", null, Day.TUESDAY, "10:00", "11:50", null, null, null);
 			tt.getMeetings().add(m);
 
-			m = new Meeting(0, null, Day.TUESDAY, "11:00", "15:00", null, null, null);
+			m = new Meeting(0, "", null, Day.TUESDAY, "11:00", "15:00", null, null, null);
 			tt.getMeetings().add(m);
 			
 		} catch (ParseException e) {
@@ -110,28 +110,28 @@ public class TestTimetable {
 	
 	@Test
 	public void testCompareTo(){
-		Timetable tt1 = new Timetable(); //score=0
-		Timetable tt2 = new Timetable();  //score=6
+		Timetable tt1 = new Timetable(); //score = 0
+		Timetable tt2 = new Timetable();  //score = 6
 		Meeting m;
 		
 		try{
-			m = new Meeting(0, null, Day.MONDAY, "10:00", "11:50", null, null, null);
+			m = new Meeting(0, "", null, Day.MONDAY, "10:00", "11:50", null, null, null);
 			tt1.getMeetings().add(m);
-			m = new Meeting(0, null,Day.TUESDAY, "10:00", "11:50", null, null, null);
+			m = new Meeting(0, "", null,Day.TUESDAY, "10:00", "11:50", null, null, null);
 			tt1.getMeetings().add(m);		
-			m = new Meeting(0, null,Day.WEDNESDAY, "10:00", "11:50",null, null, null);
+			m = new Meeting(0, "", null,Day.WEDNESDAY, "10:00", "11:50",null, null, null);
 			tt1.getMeetings().add(m);
-			m = new Meeting(0, null,Day.THURSDAY, "10:00", "11:50",null, null, null);
+			m = new Meeting(0, "", null,Day.THURSDAY, "10:00", "11:50",null, null, null);
 			tt1.getMeetings().add(m);		
-			m = new Meeting(0, null,Day.FRIDAY, "10:00", "11:50",null, null, null);
+			m = new Meeting(0, "", null,Day.FRIDAY, "10:00", "11:50",null, null, null);
 			tt1.getMeetings().add(m);	
-			m = new Meeting(0, null,Day.SATURDAY, "10:00", "11:50",null, null, null);
+			m = new Meeting(0, "", null,Day.SATURDAY, "10:00", "11:50",null, null, null);
 			tt1.getMeetings().add(m);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
 		
-		int result=tt1.compareTo(tt2);
+		int result = tt1.compareTo(tt2);
 		assertEquals(result,1);
 		
 	}
@@ -140,14 +140,14 @@ public class TestTimetable {
 	@Test
 	public void testGenComNoTut() throws ParseException{
 		//public static ArrayList<Timetable> genCom(int i,ArrayList<Course> courses){
-		ArrayList<Course> courses=new ArrayList<Course>();
-		Meeting m1=new Lecture(001, "C01",Day.SATURDAY, "10:00", "11:50",null, null, null);
-		Meeting m2= new Lecture(002, "C02",Day.WEDNESDAY, "10:00", "11:50",null, null, null);
+		ArrayList<Course> courses = new ArrayList<Course>();
+		Meeting m1 = new Lecture(001, "", "C01",Day.SATURDAY, "10:00", "11:50",null, null, null);
+		Meeting m2= new Lecture(002, "", "C02",Day.WEDNESDAY, "10:00", "11:50",null, null, null);
 		//Meeting m3 = new Tutorial(003, "T01",Day.THURSDAY, "10:00", "11:50",null, null, null);
-		Meeting m4=new Lecture(004, "T02",Day.FRIDAY, "10:00", "11:50",null, null, null);
+		Meeting m4 = new Lecture(004, "", "T02",Day.FRIDAY, "10:00", "11:50",null, null, null);
 		
-		Course c1=new Course("12345");
-		Course c2=new Course("22345");
+		Course c1 = new Course("12345");
+		Course c2 = new Course("22345");
 		
 		c1.getLecture().add((Lecture) m1);
 		c1.getLecture().add((Lecture) m2);
@@ -156,14 +156,14 @@ public class TestTimetable {
 		
 		courses.add(c1);
 		courses.add(c2);
-		ArrayList<Timetable> result=Timetable.genCom(0, courses);
-		ArrayList<Timetable> expectResult=new ArrayList<Timetable>();
-		Timetable tt1=new Timetable();
+		ArrayList<Timetable> result = Timetable.genCom(0, courses);
+		ArrayList<Timetable> expectResult = new ArrayList<Timetable>();
+		Timetable tt1 = new Timetable();
 		tt1.getMeetings().add(m1);
 		
 		tt1.getMeetings().add(m4);
 		
-		Timetable tt2=new Timetable();
+		Timetable tt2 = new Timetable();
 		tt2.getMeetings().add(m2);
 		
 		tt2.getMeetings().add(m4);
@@ -177,15 +177,15 @@ public class TestTimetable {
 	@Test
 	public void testGenCom() throws ParseException{
 		//public static ArrayList<Timetable> genCom(int i,ArrayList<Course> courses){
-		ArrayList<Course> courses=new ArrayList<Course>();
-		Meeting m1=new Lecture(001, "C01",Day.SATURDAY, "10:00", "11:50",null, null, null);
-		Meeting m2= new Lecture(002, "C02",Day.WEDNESDAY, "10:00", "11:50",null, null, null);
-		Meeting m3 = new Tutorial(003, "T01",Day.THURSDAY, "10:00", "11:50",null, null, null);
-		Meeting m4 =new Lecture(004, "C02",Day.FRIDAY, "10:00", "11:50",null, null, null);
-		Meeting m5 = new Tutorial(005, "T02",Day.THURSDAY, "10:00", "11:50",null, null, null);
+		ArrayList<Course> courses = new ArrayList<Course>();
+		Meeting m1 = new Lecture(001, "12345", "C01",Day.SATURDAY, "10:00", "11:50",null, null, null);
+		Meeting m2 = new Lecture(002, "12345", "C02",Day.WEDNESDAY, "10:00", "11:50",null, null, null);
+		Meeting m3 = new Tutorial(003, "12345", "T01",Day.THURSDAY, "10:00", "11:50",null, null, null);
+		Meeting m4  = new Lecture(004, "12345", "C02",Day.FRIDAY, "10:00", "11:50",null, null, null);
+		Meeting m5 = new Tutorial(005, "12345", "T02",Day.THURSDAY, "10:00", "11:50",null, null, null);
 		
-		Course c1=new Course("12345");
-		Course c2=new Course("22345");
+		Course c1 = new Course("12345");
+		Course c2 = new Course("22345");
 		
 		c1.getLecture().add((Lecture) m1);
 		c1.getLecture().add((Lecture) m2);
@@ -196,15 +196,15 @@ public class TestTimetable {
 		
 		courses.add(c1);
 		courses.add(c2);
-		ArrayList<Timetable> result=Timetable.genCom(0, courses);
-		ArrayList<Timetable> expectResult=new ArrayList<Timetable>();
-		Timetable tt1=new Timetable();
+		ArrayList<Timetable> result = Timetable.genCom(0, courses);
+		ArrayList<Timetable> expectResult = new ArrayList<Timetable>();
+		Timetable tt1 = new Timetable();
 		tt1.getMeetings().add(m1);
 		tt1.getMeetings().add(m3);
 		tt1.getMeetings().add(m4);
 		tt1.getMeetings().add(m5);
 		
-		Timetable tt2=new Timetable();
+		Timetable tt2 = new Timetable();
 		tt2.getMeetings().add(m2);
 		tt2.getMeetings().add(m3);
 		tt2.getMeetings().add(m4);
@@ -218,47 +218,49 @@ public class TestTimetable {
 	
 	@Test
 	public void testToString() throws ParseException{
-		Timetable tt=new Timetable();
-		int crn=45069;
-		String sessionType="T02";
-		Day dayofWeek=Day.MONDAY;
-		String startTimeString="09:00";
-		String endTimeString="09:50";
-		String campus="MMW";
-		String room="1411";
-		String instructor="LI Shuaicheng";
-		Meeting m=new Meeting(crn,  sessionType, dayofWeek,  startTimeString,  endTimeString,  campus,  room,  instructor);
+		Timetable tt = new Timetable();
+		int crn = 45069;
+		String courseCode = "CS3343";
+		String sessionType = "T02";
+		Day dayofWeek = Day.MONDAY;
+		String startTimeString = "09:00";
+		String endTimeString = "09:50";
+		String campus = "MMW";
+		String room = "1411";
+		String instructor = "LI Shuaicheng";
+		Meeting m = new Meeting(crn, courseCode,  sessionType, dayofWeek,  startTimeString,  endTimeString,  campus,  room,  instructor);
 		
-		int crn2=45070;
-		Meeting m2=new Meeting(crn2,  sessionType, dayofWeek,  startTimeString,  endTimeString,  campus,  room,  instructor);
+		int crn2 = 45070;
+		Meeting m2 = new Meeting(crn2, courseCode,  sessionType, dayofWeek,  startTimeString,  endTimeString,  campus,  room,  instructor);
 		
 		tt.getMeetings().add(m);
 		tt.getMeetings().add(m2);
 		
-		String expected=m.toString()+"\n"+m2.toString()+"\n";
+		String expected = m.toString()+"\n"+m2.toString()+"\n";
 		assertEquals(expected,tt.toString());
 	}
 	
 	@Test
 	public void testReturnArray() throws ParseException{
-		Timetable tt=new Timetable();
-		int crn=45069;
-		String sessionType="T02";
-		Day dayofWeek=Day.MONDAY;
-		String startTimeString="09:00";
-		String endTimeString="09:50";
-		String campus="MMW";
-		String room="1411";
-		String instructor="LI Shuaicheng";
-		Meeting m=new Meeting(crn,  sessionType, dayofWeek,  startTimeString,  endTimeString,  campus,  room,  instructor);
+		Timetable tt = new Timetable();
+		int crn = 45069;
+		String courseCode = "CS3343";
+		String sessionType = "T02";
+		Day dayofWeek = Day.MONDAY;
+		String startTimeString = "09:00";
+		String endTimeString = "09:50";
+		String campus = "MMW";
+		String room = "1411";
+		String instructor = "LI Shuaicheng";
+		Meeting m = new Meeting(crn, courseCode,  sessionType, dayofWeek,  startTimeString,  endTimeString,  campus,  room,  instructor);
 		
-		int crn2=45070;
-		Meeting m2=new Meeting(crn2,  sessionType, dayofWeek,  startTimeString,  endTimeString,  campus,  room,  instructor);
+		int crn2 = 45070;
+		Meeting m2 = new Meeting(crn2, courseCode,  sessionType, dayofWeek,  startTimeString,  endTimeString,  campus,  room,  instructor);
 		
 		tt.getMeetings().add(m);
 		tt.getMeetings().add(m2);
 		
-		ArrayList<Meeting> expected=new ArrayList<Meeting>();
+		ArrayList<Meeting> expected = new ArrayList<Meeting>();
 		expected.add(m);
 		expected.add(m2);
 		

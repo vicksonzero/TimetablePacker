@@ -16,6 +16,7 @@ public class TestMeeting {
 	@Test
 	public void testToString() throws ParseException {
 		int crn=45069;
+		String courseCode = "GE2324";
 		String sessionType="T02";
 		Day dayofWeek=Day.MONDAY;
 		String startTimeString="09:00";
@@ -23,10 +24,10 @@ public class TestMeeting {
 		String campus="MMW";
 		String room="1411";
 		String instructor="LI Shuaicheng";
-		Meeting m=new Meeting(crn,  sessionType, dayofWeek,  startTimeString,  endTimeString,  campus,  room,  instructor);
+		Meeting m=new Meeting(crn, courseCode,  sessionType, dayofWeek,  startTimeString,  endTimeString,  campus,  room,  instructor);
 		
 		//CRN: 45069 | Section: T02 | Day: Mon | Time: 09:00-09:50 | Campus: MMW | Room: 1411 | Instructor: LI Shuaicheng
-		assertEquals("CRN: 45069 | Course: GE2324 | Section: T02 | Day: Mon | Time: 09:00-09:50 | Campus: MMW | Room: 1411 | Instructor: LI Shuaicheng",m.toString());
+		assertEquals("CRN: 45069 | Course: GE2324 | Session: T02 | Day: Mon | Time: 09:00-09:50 | Campus: MMW | Room: 1411 | Instructor: LI Shuaicheng",m.toString());
 		
 	}
 	
@@ -34,6 +35,7 @@ public class TestMeeting {
 	@Test
 	public void testGetDay() throws ParseException {
 		int crn=45069;
+		String courseCode = "CS3343";
 		String sessionType="T02";
 		Day dayofWeek=Day.MONDAY;
 		String startTimeString="09:00";
@@ -41,7 +43,7 @@ public class TestMeeting {
 		String campus="MMW";
 		String room="1411";
 		String instructor="LI Shuaicheng";
-		Meeting m=new Meeting(crn,  sessionType, dayofWeek,  startTimeString,  endTimeString,  campus,  room,  instructor);
+		Meeting m=new Meeting(crn, courseCode,  sessionType, dayofWeek,  startTimeString,  endTimeString,  campus,  room,  instructor);
 		
 		assertEquals(Day.MONDAY,m.getDay());
 
@@ -50,6 +52,7 @@ public class TestMeeting {
 	@Test
 	public void testGetSessionType() throws ParseException {
 		int crn=45069;
+		String courseCode = "CS3343";
 		String sessionType="T02";
 		Day dayofWeek=Day.MONDAY;
 		String startTimeString="09:00";
@@ -57,7 +60,7 @@ public class TestMeeting {
 		String campus="MMW";
 		String room="1411";
 		String instructor="LI Shuaicheng";
-		Meeting m=new Meeting(crn,  sessionType, dayofWeek,  startTimeString,  endTimeString,  campus,  room,  instructor);
+		Meeting m=new Meeting(crn, courseCode,  sessionType, dayofWeek,  startTimeString,  endTimeString,  campus,  room,  instructor);
 		
 		assertEquals("T02",m.getSessionType());
 
@@ -66,6 +69,7 @@ public class TestMeeting {
 	@Test
 	public void testGetStartTime() throws ParseException {
 		int crn=45069;
+		String courseCode = "CS3343";
 		String sessionType="T02";
 		Day dayOfWeek=Day.MONDAY;
 		String startTimeString="09:00";
@@ -73,7 +77,7 @@ public class TestMeeting {
 		String campus="MMW";
 		String room="1411";
 		String instructor="LI Shuaicheng";
-		Meeting m=new Meeting(crn,  sessionType, dayOfWeek,  startTimeString,  endTimeString,  campus,  room,  instructor);
+		Meeting m=new Meeting(crn, courseCode,  sessionType, dayOfWeek,  startTimeString,  endTimeString,  campus,  room,  instructor);
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		String s="2014-09-0";
@@ -85,6 +89,7 @@ public class TestMeeting {
 	@Test
 	public void testGetEndTime() throws ParseException {
 		int crn=45069;
+		String courseCode = "CS3343";
 		String sessionType="T02";
 		Day dayOfWeek=Day.MONDAY;
 		String startTimeString="09:00";
@@ -92,7 +97,7 @@ public class TestMeeting {
 		String campus="MMW";
 		String room="1411";
 		String instructor="LI Shuaicheng";
-		Meeting m=new Meeting(crn,  sessionType, dayOfWeek,  startTimeString,  endTimeString,  campus,  room,  instructor);
+		Meeting m=new Meeting(crn, courseCode,  sessionType, dayOfWeek,  startTimeString,  endTimeString,  campus,  room,  instructor);
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		String s="2014-09-0";
@@ -102,16 +107,18 @@ public class TestMeeting {
 	
 	@Test 
 	public void testCompareTo() throws ParseException {
-		Meeting m1 = new Meeting(0, null,Day.TUESDAY, "09:00", "12:50",null, null, null);
-		Meeting m2 = new Meeting(0, null,Day.WEDNESDAY, "10:00", "11:50",null, null, null);
+		Meeting m1 = new Meeting(0, "CS3334", null,Day.TUESDAY, "09:00", "12:50",null, null, null);
+		Meeting m2 = new Meeting(0, "CS3334", null,Day.WEDNESDAY, "10:00", "11:50",null, null, null);
 		assertEquals(-1,m1.compareTo(m2));
+		assertEquals(1,m2.compareTo(m1));
 	}
 
 	@Test 
 	public void testEqual() throws ParseException {
-		Meeting m1 = new Meeting(0, null,Day.TUESDAY, "09:00", "12:50",null, null, null);
-		Meeting m2 = new Meeting(0, null,Day.TUESDAY, "09:00", "12:50",null, null, null);
+		Meeting m1 = new Meeting(0, "CS3334", null,Day.TUESDAY, "09:00", "12:50",null, null, null);
+		Meeting m2 = new Meeting(0, "CS3334", null,Day.TUESDAY, "09:00", "12:50",null, null, null);
 		assertEquals(true,m1.equals(m2));
+		assertEquals(0,m1.compareTo(m2));
 	}
 	
 }
