@@ -6,6 +6,7 @@ import java.util.Date;
 
 import timetableGen.Course;
 import timetableGen.EmptyCourse;
+import timetableGen.exception.WrongFormatException;
 
 public abstract class Meeting implements Comparable<Meeting>{
 	private Course parentCourse = EmptyCourse.getInstance();
@@ -36,7 +37,7 @@ public abstract class Meeting implements Comparable<Meeting>{
 		this.day=dayOfWeek;
 	}
 	
-	public static Meeting create(int crn, String sessionType,Day dayOfWeek, String startTimeString, String endTimeString, String campus, String room, String instructor) throws ParseException{
+	public static Meeting create(int crn, String sessionType,Day dayOfWeek, String startTimeString, String endTimeString, String campus, String room, String instructor) throws ParseException, WrongFormatException{
 		if(sessionType.charAt(0) == 'C'){
 			return new Lecture(crn, sessionType, dayOfWeek, startTimeString, endTimeString,
 					campus, room, instructor);
@@ -44,7 +45,7 @@ public abstract class Meeting implements Comparable<Meeting>{
 			return new Tutorial(crn, sessionType, dayOfWeek, startTimeString, endTimeString,
 					campus, room, instructor);
 		}
-		return null;
+		throw new WrongFormatException("session type must start with C or T");
 	}
 
 	public Day getDay() {

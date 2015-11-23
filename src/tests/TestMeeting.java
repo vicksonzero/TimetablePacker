@@ -8,14 +8,17 @@ import java.text.SimpleDateFormat;
 import org.junit.Test;
 
 import timetableGen.Course;
+import timetableGen.exception.WrongFormatException;
 import timetableGen.meeting.Day;
+import timetableGen.meeting.Lecture;
 import timetableGen.meeting.Meeting;
+import timetableGen.meeting.Tutorial;
 
 
 public class TestMeeting {
 
 	@Test
-	public void testToString() throws ParseException {
+	public void testToString() throws ParseException, WrongFormatException {
 		int crn=45069;
 		String sessionType="T02";
 		Day dayofWeek=Day.MONDAY;
@@ -34,7 +37,7 @@ public class TestMeeting {
 	
 	
 	@Test
-	public void testGetDay() throws ParseException {
+	public void testGetDay() throws ParseException, WrongFormatException {
 		int crn=45069;
 		String sessionType="T02";
 		Day dayofWeek=Day.MONDAY;
@@ -50,7 +53,7 @@ public class TestMeeting {
 	}
 	
 	@Test
-	public void testGetSessionType() throws ParseException {
+	public void testGetSessionType() throws ParseException, WrongFormatException {
 		int crn=45069;
 		String sessionType="T02";
 		Day dayofWeek=Day.MONDAY;
@@ -66,7 +69,7 @@ public class TestMeeting {
 	}
 	
 	@Test
-	public void testGetStartTime() throws ParseException {
+	public void testGetStartTime() throws ParseException, WrongFormatException {
 		int crn=45069;
 		String sessionType="T02";
 		Day dayOfWeek=Day.MONDAY;
@@ -85,7 +88,7 @@ public class TestMeeting {
 	
 	
 	@Test
-	public void testGetEndTime() throws ParseException {
+	public void testGetEndTime() throws ParseException, WrongFormatException {
 		int crn=45069;
 		String sessionType="T02";
 		Day dayOfWeek=Day.MONDAY;
@@ -103,17 +106,31 @@ public class TestMeeting {
 	}
 	
 	@Test 
-	public void testCompareTo() throws ParseException {
+	public void testCompareTo() throws ParseException, WrongFormatException {
 		Meeting m1 = Meeting.create(0, "T01",Day.TUESDAY, "09:00", "12:50",null, null, null);
 		Meeting m2 = Meeting.create(0, "T01",Day.WEDNESDAY, "10:00", "11:50",null, null, null);
 		assertEquals(-1,m1.compareTo(m2));
 	}
 
 	@Test 
-	public void testEqual() throws ParseException {
+	public void testEqual() throws ParseException, WrongFormatException {
 		Meeting m1 = Meeting.create(0, "T01",Day.TUESDAY, "09:00", "12:50",null, null, null);
 		Meeting m2 = Meeting.create(0, "T01",Day.TUESDAY, "09:00", "12:50",null, null, null);
 		assertEquals(true,m1.equals(m2));
+	}
+
+	@Test 
+	public void testCreate() throws ParseException, WrongFormatException {
+		Meeting m1 = Meeting.create(0, "C01",Day.TUESDAY, "09:00", "12:50",null, null, null);
+		Meeting m2 = Meeting.create(0, "T01",Day.TUESDAY, "09:00", "12:50",null, null, null);
+		assertTrue(m1 instanceof Lecture);
+		assertTrue(m2 instanceof Tutorial);
+	}
+
+	@Test (expected=WrongFormatException.class)
+	public void testCreateWrongInput() throws ParseException, WrongFormatException {
+		Meeting.create(0, "x01",Day.TUESDAY, "09:00", "12:50",null, null, null);
+		fail();
 	}
 	
 }

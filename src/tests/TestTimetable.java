@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import org.junit.Test;
 
 import timetableGen.Course;
+import timetableGen.exception.WrongFormatException;
 import timetableGen.meeting.Day;
 import timetableGen.meeting.Lecture;
 import timetableGen.meeting.Meeting;
@@ -19,7 +20,7 @@ import timetableGen.timetable.*;
 public class TestTimetable {
 
 	@Test
-	public void testOneDay() throws ParseException {
+	public void testOneDay() throws ParseException, WrongFormatException {
 		Timetable tt = new Timetable();
 		Meeting m;
 		
@@ -40,7 +41,7 @@ public class TestTimetable {
 	}
 	
 	@Test
-	public void testOneDayWithConflicts() throws ParseException {
+	public void testOneDayWithConflicts() throws ParseException, WrongFormatException {
 		Timetable tt = new Timetable();
 		Meeting m;
 		
@@ -61,7 +62,7 @@ public class TestTimetable {
 	}
 
 	@Test
-	public void testDifferentDays() throws ParseException {
+	public void testDifferentDays() throws ParseException, WrongFormatException {
 		Timetable tt = new Timetable();
 		Meeting m;
 		
@@ -82,54 +83,45 @@ public class TestTimetable {
 	}
 
 	@Test
-	public void testDifferentDaysWithConflicts() {
+	public void testDifferentDaysWithConflicts() throws ParseException, WrongFormatException {
 		Timetable tt = new Timetable();
 		Meeting m;
 		
-		try {
-			m = Meeting.create(0, "T01", Day.MONDAY, "09:00","10:50", null, null, null);
-			tt.getMeetings().add(m);
+		m = Meeting.create(0, "T01", Day.MONDAY, "09:00","10:50", null, null, null);
+		tt.getMeetings().add(m);
 
-			m = Meeting.create(0, "T01", Day.MONDAY, "11:00", "12:00", null, null, null);
-			tt.getMeetings().add(m);
+		m = Meeting.create(0, "T01", Day.MONDAY, "11:00", "12:00", null, null, null);
+		tt.getMeetings().add(m);
 
-			m = Meeting.create(0, "T01", Day.TUESDAY, "10:00", "11:50", null, null, null);
-			tt.getMeetings().add(m);
+		m = Meeting.create(0, "T01", Day.TUESDAY, "10:00", "11:50", null, null, null);
+		tt.getMeetings().add(m);
 
-			m = Meeting.create(0, "T01", Day.TUESDAY, "11:00", "15:00", null, null, null);
-			tt.getMeetings().add(m);
+		m = Meeting.create(0, "T01", Day.TUESDAY, "11:00", "15:00", null, null, null);
+		tt.getMeetings().add(m);
 			
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
 		assertTrue("timetable should have conflicts", tt.hasConflict());
 	}
 
 	
 	@Test
-	public void testCompareTo(){
+	public void testCompareTo() throws ParseException, WrongFormatException{
 		Timetable tt1 = new Timetable(); //score=0
 		Timetable tt2 = new Timetable();  //score=6
 		Meeting m;
 		
-		try{
-			m = Meeting.create(0, "T01", Day.MONDAY, "10:00", "11:50", null, null, null);
-			tt1.getMeetings().add(m);
-			m = Meeting.create(0, "T01",Day.TUESDAY, "10:00", "11:50", null, null, null);
-			tt1.getMeetings().add(m);		
-			m = Meeting.create(0, "T01",Day.WEDNESDAY, "10:00", "11:50",null, null, null);
-			tt1.getMeetings().add(m);
-			m = Meeting.create(0, "T01",Day.THURSDAY, "10:00", "11:50",null, null, null);
-			tt1.getMeetings().add(m);		
-			m = Meeting.create(0, "T01",Day.FRIDAY, "10:00", "11:50",null, null, null);
-			tt1.getMeetings().add(m);	
-			m = Meeting.create(0, "T01",Day.SATURDAY, "10:00", "11:50",null, null, null);
-			tt1.getMeetings().add(m);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
+		m = Meeting.create(0, "T01", Day.MONDAY, "10:00", "11:50", null, null, null);
+		tt1.getMeetings().add(m);
+		m = Meeting.create(0, "T01",Day.TUESDAY, "10:00", "11:50", null, null, null);
+		tt1.getMeetings().add(m);		
+		m = Meeting.create(0, "T01",Day.WEDNESDAY, "10:00", "11:50",null, null, null);
+		tt1.getMeetings().add(m);
+		m = Meeting.create(0, "T01",Day.THURSDAY, "10:00", "11:50",null, null, null);
+		tt1.getMeetings().add(m);		
+		m = Meeting.create(0, "T01",Day.FRIDAY, "10:00", "11:50",null, null, null);
+		tt1.getMeetings().add(m);	
+		m = Meeting.create(0, "T01",Day.SATURDAY, "10:00", "11:50",null, null, null);
+		tt1.getMeetings().add(m);
 		
 		int result=tt1.compareTo(tt2);
 		assertEquals(result,1);
@@ -217,7 +209,7 @@ public class TestTimetable {
 	}
 	
 	@Test
-	public void testToString() throws ParseException{
+	public void testToString() throws ParseException, WrongFormatException{
 		Timetable tt=new Timetable();
 		int crn=45069;
 		String sessionType="T02";
@@ -240,7 +232,7 @@ public class TestTimetable {
 	}
 	
 	@Test
-	public void testReturnArray() throws ParseException{
+	public void testReturnArray() throws ParseException, WrongFormatException{
 		Timetable tt=new Timetable();
 		int crn=45069;
 		String sessionType="T02";
