@@ -125,10 +125,10 @@ public class Timetable implements Comparable<Timetable>{
 	
 	@Override
 	public boolean equals(Object object){
+		if(!(object instanceof Timetable)) return false;
 		Timetable o2=(Timetable)object;
-		if (this.meetings.containsAll(o2.meetings)&&o2.meetings.containsAll(this.meetings))
-			return true;
-		return false;
+		return (this.meetings.containsAll(o2.meetings)&&o2.meetings.containsAll(this.meetings));
+
 	}
 	
 	@Override
