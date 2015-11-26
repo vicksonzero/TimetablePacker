@@ -9,7 +9,9 @@ public class CompareDayCount implements Comparator<Timetable> {
 
 	@Override
 	public int compare(Timetable o1, Timetable o2) {
-		return calcDays(o2) - calcDays(o1);
+		int calcDays1 = calcDays(o1);
+		int calcDays2 = calcDays(o2);
+		return calcDays1 - calcDays2;
 	}
 	
 	private int calcDays(Timetable t){

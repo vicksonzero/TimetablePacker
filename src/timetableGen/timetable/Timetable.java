@@ -5,29 +5,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import timetableGen.Course;
-import timetableGen.meeting.*;
-import timetableGen.rating.*;
+import timetableGen.meeting.Lecture;
+import timetableGen.meeting.Meeting;
+import timetableGen.meeting.Tutorial;
 
 
-public class Timetable implements Comparable<Timetable>{
+public class Timetable{
 	private ArrayList<Meeting> meetings=new ArrayList<Meeting>();
-	private Integer score=null;
 	
-
-	@Override
-	public int compareTo(Timetable t2) {
-		if (this.score==null){
-			RateHandler rater=new RateHandler(this.meetings);
-			this.score=rater.rate();
-		}
-		
-		if(t2.score==null){
-			RateHandler raterT2=new RateHandler(t2.meetings);
-			t2.score=raterT2.rate();
-		}
-		
-		return score.compareTo(t2.score);
-	}
 	
 	public boolean hasConflict(){
 		

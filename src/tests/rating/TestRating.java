@@ -11,13 +11,14 @@ import org.junit.Test;
 import timetableGen.exception.WrongFormatException;
 import timetableGen.meeting.Day;
 import timetableGen.meeting.Meeting;
-import timetableGen.rating.CompareTimeDiff;
+import timetableGen.rating.RateHandler;
 import timetableGen.timetable.Timetable;
 
-public class TestCompareTimeDiff {
+public class TestRating {
+
 
 	@Test
-	public void testCompareFunction() throws ParseException, WrongFormatException {
+	public void testRating() throws ParseException, WrongFormatException {
 		Meeting m ;
 		Timetable t1 = new Timetable();
 		Timetable t2 = new Timetable();
@@ -25,18 +26,8 @@ public class TestCompareTimeDiff {
 		
 		m = Meeting.create(0, "T01", Day.MONDAY, "10:00", "11:50", null, null, null);
 		t1.getMeetings().add(m);
-
-		m = Meeting.create(0, "T02", Day.MONDAY, "12:00", "14:50", null, null, null);
-		t1.getMeetings().add(m);
-		
-		m = Meeting.create(0, "T01",Day.MONDAY, "10:00", "10:50", null, null, null);
-		t2.getMeetings().add(m);
-
-		m = Meeting.create(0, "T02", Day.MONDAY, "11:00", "12:50", null, null, null);
-		t2.getMeetings().add(m);
-		
 		// check compare function
-		CompareTimeDiff c = new CompareTimeDiff();
+		RateHandler c = new RateHandler();
 		assertTrue(c.compare(t1, t2)>0);
 		
 		// check sorting
