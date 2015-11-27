@@ -6,7 +6,6 @@ import java.util.Date;
 
 import timetableGen.meeting.Day;
 import timetableGen.meeting.Meeting;
-import timetableGen.timetable.*;
 
 public class RateHandler {
 	private ArrayList<Meeting> meetingList;
