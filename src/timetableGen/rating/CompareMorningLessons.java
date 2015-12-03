@@ -6,8 +6,12 @@ import java.util.Comparator;
 import timetableGen.meeting.Meeting;
 import timetableGen.timetable.Timetable;
 
-public class CompareMorningLessons implements Comparator<Timetable> {
-
+public class CompareMorningLessons extends TimetableComparator {
+	
+	public CompareMorningLessons(){
+		name = "Fewest Morning Lessons";
+	}
+	
 	@Override
 	public int compare(Timetable o1, Timetable o2) {
 		int countMorningLesson1 = countMorningLesson(o1);

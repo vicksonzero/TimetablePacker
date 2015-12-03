@@ -9,8 +9,12 @@ import timetableGen.meeting.Day;
 import timetableGen.meeting.Meeting;
 import timetableGen.timetable.Timetable;
 
-public class CompareTimeDiff implements Comparator<Timetable> {
-
+public class CompareTimeDiff extends TimetableComparator {
+	
+	public CompareTimeDiff(){
+		name = "Shortest days";
+	}
+	
 	@Override
 	public int compare(Timetable o1, Timetable o2) {
 		int timeDiff1 = timeDiff(o1);

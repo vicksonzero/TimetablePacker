@@ -5,7 +5,10 @@ import java.util.Comparator;
 
 import timetableGen.timetable.Timetable;
 
-public class RateHandler implements Comparator<Timetable>{
+public class RateHandler extends TimetableComparator {
+	
+	public String name = "RateHandler";
+	
 	private ArrayList<Comparator<Timetable> > comparators = new ArrayList<Comparator<Timetable> >();
 	
 	public RateHandler(){

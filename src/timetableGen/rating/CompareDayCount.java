@@ -1,11 +1,14 @@
 package timetableGen.rating;
 
-import java.util.Comparator;
-
 import timetableGen.meeting.Day;
 import timetableGen.meeting.Meeting;
 import timetableGen.timetable.Timetable;
-public class CompareDayCount implements Comparator<Timetable> {
+
+public class CompareDayCount extends TimetableComparator {
+	
+	public CompareDayCount(){
+		name = "Fewest days";
+	}
 
 	@Override
 	public int compare(Timetable o1, Timetable o2) {
