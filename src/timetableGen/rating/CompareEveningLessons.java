@@ -1,7 +1,6 @@
 package timetableGen.rating;
 
 import java.util.Calendar;
-import java.util.Comparator;
 
 import timetableGen.meeting.Meeting;
 import timetableGen.timetable.Timetable;

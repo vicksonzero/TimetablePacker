@@ -15,7 +15,7 @@ public class RateHandler extends TimetableComparator {
 		this.comparators.add(new CompareDayCount());
 	}
 	
-	public RateHandler addComparator(Comparator c){
+	public RateHandler addComparator(Comparator<Timetable> c){
 		this.comparators.add(c);
 		return this;
 	}

@@ -1,6 +1,6 @@
 package tests.rating;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -12,7 +12,6 @@ import timetableGen.exception.WrongFormatException;
 import timetableGen.meeting.Day;
 import timetableGen.meeting.Meeting;
 import timetableGen.rating.CompareDayCount;
-import timetableGen.rating.RateHandler;
 import timetableGen.timetable.Timetable;
 
 public class TestCompareDayCount {
@@ -64,7 +63,6 @@ public class TestCompareDayCount {
 	@Test
 	public void testCompareFunctionKeepOrder() throws ParseException, WrongFormatException {
 		Meeting m ;
-		ArrayList<Meeting> meetingList=new ArrayList<Meeting>();
 		Timetable t1 = new Timetable();
 		Timetable t2 = new Timetable();
 		

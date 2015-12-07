@@ -2,8 +2,6 @@ package timetableGen.rating;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
-import java.util.Date;
 
 import timetableGen.meeting.Day;
 import timetableGen.meeting.Meeting;

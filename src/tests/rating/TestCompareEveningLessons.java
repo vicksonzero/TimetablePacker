@@ -63,7 +63,6 @@ public class TestCompareEveningLessons {
 	@Test
 	public void testCompareFunctionKeepOrder() throws ParseException, WrongFormatException {
 		Meeting m ;
-		ArrayList<Meeting> meetingList=new ArrayList<Meeting>();
 		Timetable t1 = new Timetable();
 		Timetable t2 = new Timetable();
 		
