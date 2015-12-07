@@ -26,7 +26,7 @@ public class Controller{
 		Scanner sc=new Scanner(System.in);
 		//Input filepath
 		System.out.println("Please input filepath: ");
-		String filepath=sc.next();
+		String filepath=sc.nextLine();
 				
 		//Input file
 		File file=new File(filepath);
@@ -93,6 +93,7 @@ public class Controller{
 		
 		// holder
 		String input = "";
+		ArrayList<Integer> ordering = new ArrayList<Integer>();
 		
 		// loop until input has correct format
 		do{
@@ -101,15 +102,27 @@ public class Controller{
 			System.out.println("(eg: 1 2 3 4):");
 			
 			// input
-			input=sc.next();
+			input=sc.nextLine();
 			
 			// check against regex for correct format (number space number space number...number)
 			inputIsGood = Pattern.matches("\\d( \\d)*", input);
+			
+			if(inputIsGood){
+				//parse input to a list of orderings
+				ordering = parseOrdering(input);
+				
+				for(int i=0; i < ordering.size(); i++){
+					if(ordering.get(i)<1 || ordering.get(i)>comparators.size()){
+						System.out.printf("Rule ID is between 1 and %d, inclusive\n", comparators.size());
+						inputIsGood = false;
+						break;
+					}
+				}
+			}
+
 
 		}while(! inputIsGood);
 		
-		//parse input to a list of orderings
-		ArrayList<Integer> ordering = parseOrdering(input);
 		
 		// transform ordering to result
 		for(int i=0; i < ordering.size(); i++){
