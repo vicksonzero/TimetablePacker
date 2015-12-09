@@ -102,31 +102,6 @@ public class TestTimetable {
 		
 		assertTrue("timetable should have conflicts", tt.hasConflict());
 	}
-
-	
-	@Test
-	public void testCompareTo() throws ParseException, WrongFormatException{
-		Timetable tt1 = new Timetable(); //score=0
-		Timetable tt2 = new Timetable();  //score=6
-		Meeting m;
-		
-		m = Meeting.create(0, "T01", Day.MONDAY, "10:00", "11:50", null, null, null);
-		tt1.getMeetings().add(m);
-		m = Meeting.create(0, "T01",Day.TUESDAY, "10:00", "11:50", null, null, null);
-		tt1.getMeetings().add(m);		
-		m = Meeting.create(0, "T01",Day.WEDNESDAY, "10:00", "11:50",null, null, null);
-		tt1.getMeetings().add(m);
-		m = Meeting.create(0, "T01",Day.THURSDAY, "10:00", "11:50",null, null, null);
-		tt1.getMeetings().add(m);		
-		m = Meeting.create(0, "T01",Day.FRIDAY, "10:00", "11:50",null, null, null);
-		tt1.getMeetings().add(m);	
-		m = Meeting.create(0, "T01",Day.SATURDAY, "10:00", "11:50",null, null, null);
-		tt1.getMeetings().add(m);
-		
-		int result=tt1.compareTo(tt2);
-		assertEquals(result,1);
-		
-	}
 	
 	
 	@Test
