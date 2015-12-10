@@ -2,6 +2,10 @@ package timetableGen.meeting;
 
 import timetableGen.exception.WrongFormatException;
 
+/**
+ * Hold Day information, parse between numeric value, string format and Day for in/ouput
+ */
+
 public enum Day {
     MONDAY(1),
     TUESDAY(2),
@@ -20,6 +24,14 @@ public enum Day {
     public int getValue() {
         return value;
     }
+    
+    /**
+     * Inputting Day in string format and return in Day 
+     * @param str
+     * @return
+     * @throws WrongFormatException
+     */
+    
     public static Day stringToDay(String str) throws WrongFormatException{
     	//Converting String to char for switch statement so that it can be run with JDK 1.6
     	if (str.length()>1){

@@ -8,12 +8,22 @@ import timetableGen.Course;
 import timetableGen.meeting.Lecture;
 import timetableGen.meeting.Meeting;
 import timetableGen.meeting.Tutorial;
-
+/**
+ * Hold timetable of meetings.
+ * Include methods:
+ * 	-hasConflict(): any time crash?
+ *	-genCom(int, ArrayList<Course>): static method that generate timetables by calculating all combination of courses 
+ *	-getter and setting methods
+ *  -equal()
+ */
 
 public class Timetable{
 	private ArrayList<Meeting> meetings=new ArrayList<Meeting>();
 	
-	
+	/**
+	 * determine if there is time crash between lessons in timetable
+	 * @return boolean hasConflict
+	 */
 	public boolean hasConflict(){
 		
 		// sort all meetings here according to startDateTime
@@ -46,7 +56,12 @@ public class Timetable{
 		return this.meetings;
 	}
 	
-
+/**
+ * static method that generate timetables by calculating all combination of courses 
+ * @param index
+ * @param courses
+ * @return
+ */
 	public static ArrayList<Timetable> genCom(int i,ArrayList<Course> courses){
 		ArrayList<Timetable> ttList=new ArrayList<Timetable>();
 	/*	if(courses.size()==0){
@@ -107,7 +122,9 @@ public class Timetable{
 		return ttList;
 	}
 	
-	
+	/**
+	 * determine if the timetables are equal by comparing meetings that contains in this.meetings
+	 */
 	@Override
 	public boolean equals(Object object){
 		if(!(object instanceof Timetable)) return false;

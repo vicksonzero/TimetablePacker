@@ -6,7 +6,9 @@ import timetableGen.meeting.Meeting;
 import timetableGen.timetable.Timetable;
 
 public class CompareEveningLessons extends TimetableComparator {
-	
+	/**
+	 * Sub-comparator to allow sort according to no. of evening lessons
+	 */
 	public CompareEveningLessons(){
 		name = "Fewest Evening Lessons";
 	}
@@ -18,7 +20,11 @@ public class CompareEveningLessons extends TimetableComparator {
 		
 		return countEveningLesson1 - countEveningLesson2;
 	}
-	
+	/**
+	 * Calculate total no of lesson days in the timetable
+	 * @param timetable t
+	 * @return Integer noOfEveningLessons
+	 */
 	private int countEveningLesson(Timetable t){
 		int counter=0;
 		 Calendar cal = Calendar.getInstance();

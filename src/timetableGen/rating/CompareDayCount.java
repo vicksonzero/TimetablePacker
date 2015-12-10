@@ -5,7 +5,9 @@ import timetableGen.meeting.Meeting;
 import timetableGen.timetable.Timetable;
 
 public class CompareDayCount extends TimetableComparator {
-	
+	/**
+	 * Sub-comparator to allow sort according to no. of days
+	 */
 	public CompareDayCount(){
 		name = "Fewest days";
 	}
@@ -16,7 +18,11 @@ public class CompareDayCount extends TimetableComparator {
 		int calcDays2 = calcDays(o2);
 		return calcDays1 - calcDays2;
 	}
-	
+	/**
+	 * Calculate total no of lesson days in the timetable
+	 * @param timetable t
+	 * @return Integer noOfDays
+	 */
 	private int calcDays(Timetable t){
 		int[] week=new int[7];
 		for (Meeting e:t.getMeetings()){

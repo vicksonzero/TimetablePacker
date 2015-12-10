@@ -5,6 +5,11 @@ import java.util.ArrayList;
 import timetableGen.meeting.Lecture;
 import timetableGen.meeting.Tutorial;
 
+/**
+ * Course Class holds the lists of available lectures and tutorials under each course,
+ * Including only getter and setter method in this class
+ */
+
 public class Course {
 	private ArrayList<Lecture> lectureList = new ArrayList<Lecture>();
 	private ArrayList<Tutorial> tutorialList = new ArrayList<Tutorial>();

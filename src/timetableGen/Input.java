@@ -10,7 +10,9 @@ import timetableGen.exception.WrongFormatException;
 import timetableGen.meeting.Day;
 import timetableGen.meeting.Lecture;
 import timetableGen.meeting.Tutorial;
-
+/**
+ * Input class handles reading txt file and extract data into class structure for future process
+ */
 public class Input {
 	ArrayList<String> session = new ArrayList<String>();
 	
@@ -18,6 +20,13 @@ public class Input {
 	public Input(File f){
 		this.file = f;
 	}
+	
+	/**
+	 * Read txt file and extract data into class structure for future process
+	 * @return
+	 * @throws FileNotFoundException
+	 * @throws WrongFormatException
+	 */
 	public ArrayList<Course> parse() throws FileNotFoundException, WrongFormatException{
     	// holder for result
     	ArrayList<Course> result = new ArrayList<Course>();
@@ -75,6 +84,12 @@ public class Input {
 		return result;
 	}
 	
+	/**
+	 * Determine to new a Lecture object or Tutorial object. Add the object into the specific ArrayList instance of the currentCourse.   
+	 * @param currentCourse
+	 * @param line
+	 * @throws WrongFormatException
+	 */
 	protected void processMeetingLine(Course currentCourse, String line) throws WrongFormatException{
 
 		String[] data = line.split("\t");

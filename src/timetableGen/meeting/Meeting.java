@@ -7,7 +7,11 @@ import java.util.Date;
 import timetableGen.Course;
 import timetableGen.EmptyCourse;
 import timetableGen.exception.WrongFormatException;
-
+/**
+ * Meeting class is the class structure to hold information of a lesson no matter it is lecture or tutorials,
+ * This class contains instance fields, constructors(for subclasses- lecture and tutorial),create method,  getter, setter and implemented compare method.
+ *
+ */
 public abstract class Meeting implements Comparable<Meeting>{
 	private Course parentCourse = EmptyCourse.getInstance();
 	private int crn;
@@ -18,6 +22,19 @@ public abstract class Meeting implements Comparable<Meeting>{
 	private Day day;
 	private Date startDateTime;
 	private Date endDateTime;
+	
+	/**
+	 * Subclass (Lecture and Tutorials) called this constructor.
+	 * @param crn
+	 * @param sessionType
+	 * @param dayOfWeek
+	 * @param startTimeString
+	 * @param endTimeString
+	 * @param campus
+	 * @param room
+	 * @param instructor
+	 * @throws ParseException
+	 */
 	
 	public Meeting(int crn, String sessionType,Day dayOfWeek, String startTimeString, String endTimeString, String campus, String room, String instructor) throws ParseException{
 		this.crn = crn;
@@ -30,13 +47,25 @@ public abstract class Meeting implements Comparable<Meeting>{
 		s+=new Integer(dayOfWeek.getValue()).toString();
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-		//System.out.println(s);
 		
 		this.startDateTime = sdf.parse(s+" "+startTimeString);
 		this.endDateTime = sdf.parse(s+" "+endTimeString);
 		this.day=dayOfWeek;
 	}
-	
+	/**
+	 * This class read and define whether actual object lecture or tutorials should be created.
+	 * @param crn
+	 * @param sessionType
+	 * @param dayOfWeek
+	 * @param startTimeString
+	 * @param endTimeString
+	 * @param campus
+	 * @param room
+	 * @param instructor
+	 * @return Tutorial object or Lecture object
+	 * @throws ParseException
+	 * @throws WrongFormatException
+	 */
 	public static Meeting create(int crn, String sessionType,Day dayOfWeek, String startTimeString, String endTimeString, String campus, String room, String instructor) throws ParseException, WrongFormatException{
 		if(sessionType.charAt(0) == 'C'){
 			return new Lecture(crn, sessionType, dayOfWeek, startTimeString, endTimeString,
@@ -57,6 +86,9 @@ public abstract class Meeting implements Comparable<Meeting>{
         return sessionType;
     }
 	
+	/**
+	 * Return in this format :CRN: 45069 | Course: [CourseCode] | Section: T02 | Day: Mon | Time: 09:00-09:50 | Campus: MMW | Room: 1411 | Instructor: LI Shuaicheng
+	 */
 	@Override
     public String toString() 
     {
@@ -72,7 +104,6 @@ public abstract class Meeting implements Comparable<Meeting>{
 				instructorName = this.instructor;
 		return String.format("CRN: %d | Course: %s | Session: %s | Day: %s | Time: %s-%s | Campus: %s | Room: %s | Instructor: %s", 
 				crn, course, session, day, startTime, endTime, campus, room, instructorName);
-        //return "CRN: "+ this.crn + " Sesion: "+ this.sessionType + " Time: "+ this.startDateTime + " - " + this.endDateTime + " Campus: "+ this.campus + " Room: "+ this.room + " Instructor: "+ this.instructor;
     }
 	
 	public Date getStartDateTime() {

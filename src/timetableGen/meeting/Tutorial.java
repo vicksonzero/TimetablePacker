@@ -11,6 +11,5 @@ public class Tutorial extends Meeting
 			throws ParseException {
 		super(crn, sessionType, dayOfWeek, startDateTimeString, endDateTimeString,
 				campus, room, instructor);
-		// TODO Auto-generated constructor stub
 	}
 }

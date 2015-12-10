@@ -8,7 +8,9 @@ import timetableGen.meeting.Meeting;
 import timetableGen.timetable.Timetable;
 
 public class CompareTimeDiff extends TimetableComparator {
-	
+	/**
+	 * Sub-comparator to allow sort according to total no. of hours of break between lessons (shorter is better)
+	 */
 	public CompareTimeDiff(){
 		name = "Shortest days";
 	}
@@ -20,6 +22,7 @@ public class CompareTimeDiff extends TimetableComparator {
 		
 		return timeDiff1 - timeDiff2;
 	}
+	
 	/**
 	 * returns time to be spent on the same day
 	 * @return

@@ -5,15 +5,15 @@ import java.util.Comparator;
 
 import timetableGen.timetable.Timetable;
 
-public class RateHandler extends TimetableComparator {
-	
+public class RateHandler implements Comparator<Timetable> {
+	/**
+	 * Comparator of timetables.
+	 * Contains a list of sub-comparator in order under the user preference
+	 */
 	public String name = "RateHandler";
 	
 	private ArrayList<Comparator<Timetable> > comparators = new ArrayList<Comparator<Timetable> >();
 	
-	public RateHandler(){
-		this.comparators.add(new CompareDayCount());
-	}
 	
 	public RateHandler addComparator(Comparator<Timetable> c){
 		this.comparators.add(c);

@@ -3,7 +3,6 @@ package timetableGen.meeting;
 import java.text.ParseException;
 
 
-
 public class Lecture extends Meeting
 {
 
@@ -13,7 +12,6 @@ public class Lecture extends Meeting
 			throws ParseException {
 		super(crn, sessionType, dayOfWeek, startDateTimeString, endDateTimeString,
 				campus, room, instructor);
-		// TODO Auto-generated constructor stub
 	}
 }
 

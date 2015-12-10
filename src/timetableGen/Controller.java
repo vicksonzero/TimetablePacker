@@ -20,11 +20,10 @@ import timetableGen.timetable.Timetable;
 public class Controller{
 
 	private static ArrayList<Timetable> timetables=new ArrayList<Timetable>();
-	//private static final String FILENAME = "input-file.txt";
-	
+		
 	public static void main(String args[]) throws FileNotFoundException, WrongFormatException, NoInputCourseException{
 		Scanner sc=new Scanner(System.in);
-		//Input filepath
+		//Input file path
 		System.out.println("Please input filepath: ");
 		String filepath=sc.nextLine();
 				
@@ -32,7 +31,7 @@ public class Controller{
 		File file=new File(filepath);
 		Input input=new Input(file);
 		
-		//Process file into arraylist and classes
+		//Process file into arrayList and classes
 		ArrayList<Course> courses=input.parse();
 		if (courses.size()==0){
 			sc.close();
@@ -48,7 +47,7 @@ public class Controller{
 				timetables.add(tt);
 		}
 		
-		TimetableComparator compositeComparator = interactiveMakeComparator(sc);
+		RateHandler compositeComparator = interactiveMakeComparator(sc);
 		
 		//sort according to level of recommendation
 		Collections.sort(timetables,compositeComparator);
@@ -68,7 +67,12 @@ public class Controller{
 		return result;		
 	}
 	
-	public static TimetableComparator interactiveMakeComparator(Scanner sc){
+	/**
+	 * Interactively create a RateHandler that contains an arrayList of sub-comparator 
+	 * @param sc
+	 * @return RateHandler
+	 */
+	public static RateHandler interactiveMakeComparator(Scanner sc){
 		
 		// prepare a list of choices
 		ArrayList<TimetableComparator> comparators = new ArrayList<TimetableComparator>();
