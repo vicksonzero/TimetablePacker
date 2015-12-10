@@ -47,14 +47,27 @@ public class Controller{
 				timetables.add(tt);
 		}
 		
+		if(timetables.size()<=0){
+			System.out.printf("No possible timetables found\n");
+			sc.close();
+			return;
+		}
+		
+		// prompt for timetable preference
 		RateHandler compositeComparator = interactiveMakeComparator(sc);
 		
 		//sort according to level of recommendation
 		Collections.sort(timetables,compositeComparator);
 		
-		// prepare and print top 3
+		// prepare anM:\_season04\TimetablePacker\src\tests\testcases\test02_3courses.txtd print top 3
 		String result="";
-		for (int i=0;i<3;i++){
+		
+		// result summary
+		result += String.format("Showing top %d of %d possible timetables\n", 
+				(timetables.size() > 3? 3: timetables.size()), 
+				timetables.size());
+		
+		for (int i=0; i < timetables.size() && i<3; i++){
 			result+=("Rank "+(i+1)+": \n" + timetables.get(i));
 		}
 		
