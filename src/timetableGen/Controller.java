@@ -88,7 +88,6 @@ public class Controller{
 		comparators.add(new CompareMorningLessons());
 		comparators.add(new CompareEveningLessons());
 		comparators.add(new CompareTimeDiff());
-		comparators.add(new CompareGapHours());
 		
 		// result
 		RateHandler result = new RateHandler();
