@@ -9,12 +9,7 @@ import java.util.regex.Pattern;
 
 import timetableGen.exception.NoInputCourseException;
 import timetableGen.exception.WrongFormatException;
-import timetableGen.rating.CompareDayCount;
-import timetableGen.rating.CompareEveningLessons;
-import timetableGen.rating.CompareMorningLessons;
-import timetableGen.rating.CompareTimeDiff;
-import timetableGen.rating.RateHandler;
-import timetableGen.rating.TimetableComparator;
+import timetableGen.rating.*;
 import timetableGen.timetable.Timetable;
 
 public class Controller{
@@ -93,6 +88,7 @@ public class Controller{
 		comparators.add(new CompareMorningLessons());
 		comparators.add(new CompareEveningLessons());
 		comparators.add(new CompareTimeDiff());
+		comparators.add(new CompareGapHours());
 		
 		// result
 		RateHandler result = new RateHandler();
@@ -116,7 +112,7 @@ public class Controller{
 		do{
 			// prompt
 			System.out.println("Input the numbers of the rules, separated by space bar");
-			System.out.println("(eg: 1 2 3 4):");
+			System.out.println("(eg: 1 5 3 4):");
 			
 			// input
 			input=sc.nextLine();

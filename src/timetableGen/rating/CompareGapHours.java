@@ -7,27 +7,27 @@ import timetableGen.meeting.Day;
 import timetableGen.meeting.Meeting;
 import timetableGen.timetable.Timetable;
 
-public class CompareTimeDiff extends TimetableComparator {
+public class CompareGapHours extends TimetableComparator {
 	/**
 	 * Sub-comparator to allow sort according to total no. of hours of break between lessons (shorter is better)
 	 */
-	public CompareTimeDiff(){
-		name = "Shortest days";
+	public CompareGapHours(){
+		name = "Least gap hours";
 	}
 	
 	@Override
 	public int compare(Timetable o1, Timetable o2) {
-		int timeDiff1 = timeDiff(o1);
-		int timeDiff2 = timeDiff(o2);
+		int gapHours1 = gapHours(o1);
+		int gapHours2 = gapHours(o2);
 		
-		return timeDiff1 - timeDiff2;
+		return gapHours1 - gapHours2;
 	}
 	
 	/**
-	 * returns time to be spent on the same day
-	 * @return
+	 * returns number of gap hours
+	 * @return number of gap hours
 	 */
-	public int timeDiff(Timetable t){
+	public int gapHours(Timetable t){
 		
 		ArrayList<Meeting> meetings = new ArrayList<Meeting>(t.getMeetings());
 		int result = 0;
@@ -43,15 +43,23 @@ public class CompareTimeDiff extends TimetableComparator {
 		for(Meeting e:meetings){
 			// if new day
 			if(e.getDay() != currentDay){
+				// remember this day
 				currentDay = e.getDay();
-				if(endHour - startHour> result) result = endHour - startHour; // endHour == startHour in the first round
-				startHour = (int)((e.getStartDateTime().getTime()/1000/60+10)/60);
+				// record end hour, not using it for this round
 				endHour = (int)((e.getEndDateTime().getTime()/1000/60+10)/60);
 			}else{
+				// if have previous class
+				
+				// check this class's start time
+				startHour = (int)((e.getStartDateTime().getTime()/1000/60+10)/60);
+				
+				// add gap to result
+				result+= startHour - endHour;
+				
+				// record this class's end time for next round
 				endHour = (int)((e.getEndDateTime().getTime()/1000/60+10)/60);
 			}
 		}
-		if(endHour - startHour> result) result = endHour - startHour; // endHour == startHour in the first round
 		
 		
 		return result;
