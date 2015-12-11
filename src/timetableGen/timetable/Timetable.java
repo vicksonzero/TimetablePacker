@@ -18,7 +18,7 @@ import timetableGen.meeting.Tutorial;
  */
 
 public class Timetable{
-	private ArrayList<Meeting> meetings=new ArrayList<Meeting>();
+	protected ArrayList<Meeting> meetings=new ArrayList<Meeting>();
 	
 	/**
 	 * determine if there is time crash between lessons in timetable

@@ -53,7 +53,7 @@ public abstract class Meeting implements Comparable<Meeting>{
 		this.day=dayOfWeek;
 	}
 	/**
-	 * This class read and define whether actual object lecture or tutorials should be created.
+	 * This class read and define whether actual object lecture or tutorials should be created. Returns Lecture or Tutorial object.
 	 * @param crn
 	 * @param sessionType
 	 * @param dayOfWeek
